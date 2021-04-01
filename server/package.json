@@ -1,0 +1,26 @@
+{
+  "name": "honours_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "/server/bar_chart_server.js",
+  "scripts": {
+    "start": "node /server/bar_chart_server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^2.9.4",
+    "color-space": "^1.16.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "passport": "^0.4.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "connect-flash": "^0.1.1",
+    "express-session": "^1.17.1",
+    "mongodb": "^3.6.5"
+  }
+}
