@@ -2,9 +2,9 @@
   "name": "honours_project",
   "version": "1.0.0",
   "description": "",
-  "main": "/server/bar_chart_server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node /server/bar_chart_server.js",
+    "start": "node bar_chart_server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
