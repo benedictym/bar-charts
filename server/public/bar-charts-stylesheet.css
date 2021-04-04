@@ -5,6 +5,8 @@
 body {
     /*background-color: #F6F2EB;*/
     background-color: #FFFBF6;
+    font-family: 'Chivo', sans-serif ;
+    color: #686666;
 }
 
 header {
@@ -24,6 +26,15 @@ h3 {
     font-style: normal;
     letter-spacing: 0.09em;
     font-size: 20px;
+}
+
+h4{
+    font-weight: 300;
+    font-style: normal;
+    letter-spacing: 0.09em;
+    font-size: 18px;
+    text-align: left;
+    line-height: 1.5em;
 }
 
 h6{
@@ -69,4 +80,50 @@ button:link{
 button:visited {
 
     text-decoration: none;
+}
+
+.container{
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.description{
+    display: flex;
+    line-height: 1.5em;
+    justify-content: center;
+    margin: 10px;
+    flex-direction: column;
+    align-content: center;
+}
+
+.intro-instr{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    flex-direction: column;
+    align-content: center;
+}
+
+.colour-blind-check{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    flex-direction: column;
+    align-content: center;
+}
+
+.instr{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    flex-direction: column;
+    align-content: center;
+}
+
+a:link{
+    text-decoration: none;
+}
+
+a:hover{
+    color: #686666;
 }

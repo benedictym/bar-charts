@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>COLOUR PREFERENCE TASK</title>
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/bar-charts-stylesheet.css">
+    <script src="/lineages.js" defer></script>
+
+</head>
+
+<body>
+<div class="content-wrapper">
+    <div class="wrapper">
+        <header>
+            <div class="title-container">
+                <h1>Consent</h1>
+                <br>
+            </div>
+            <div class="instr">
+                <h4>You must have JavaScript enabled for this HIT to work.
+                <br>If you do, and still cannot see this HIT please return it and inform the requester
+                </h4>
+                <h4><em>Unfortunately this experiment may not support some versions of Microsoft Internet Explorer or touchscreen devices
+                        <br>Please do not accept if you are using a phone, tablet or are using MSIE 9 or earlier.
+                    </em>
+                </h4>
+                <h4>Once completed, the survey will give you a code on the final page. Enter it as the MTURK survey code to complete the HIT</h4>
+                <h4>If you complete the survey but there is a problem and you do not receive a code, please email <b></b><a href="mailto:s1711095@ed.ac.uk"></a><b>s1711095@ed.ac.uk</b> stating what happened as well as what browser and what version you are using.</h4>
+                <h4>
+                    Before you proceed to the task please read the <a href="/ONLINE_PIS.pdf" target="_blank"><b>Participation Information Sheet</b></a> and give your consent to participate in the study.
+                </h4>
+                <label class="container"> I accept the conditions in the Participation Information Sheet
+                    <input type="checkbox" id="participation-sheet">
+                    <input type="button" value="submit" onclick="confirmRead()">
+                    <span class="checkmark"></span>
+                </label>
+<!--                <script>-->
+<!--                    function confirmRead() {-->
+<!--                        if(document.getElementById("participation-sheet").checked){-->
+<!--                            window.location.href = "/task";-->
+<!--                        } else {-->
+<!--                            alert("If you do not accept the conditions please return the HIT.");-->
+<!--                            return false;-->
+<!--                        }-->
+<!--                    }-->
+<!--                </script>-->
+            </div>
+        </header>
+    </div>
+</div>
+</body>
+</html>

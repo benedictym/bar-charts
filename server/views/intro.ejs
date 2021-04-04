@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>COLOUR PREFERENCE TASK</title>
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/bar-charts-stylesheet.css">
+</head>
+
+<body>
+<div class="content-wrapper">
+    <div class="wrapper">
+        <header>
+            <div class="title-container">
+                <h1>WELCOME</h1>
+                <br>
+            </div>
+
+            <div class="description">
+                <h3><b>PROJECT AIM</b></h3>
+                <h3>The aim of this project is to find highly aesthetically preferable colour combinations for categorical data visualisation.</h3>
+                <h3>The study focuses on web data visualisation tools, using the cognitively inspired probabilistic Monte Carlo Markov Chains with People model in order to generate datasets with different colour combinations to be analysed by study participants.</h3>
+                <h3>The results of this project could be applied to existing colour palette creation tools to be used for data visualisation on websites or web applications. This would aid web designers or data analysts looking to create aesthetically favourable dataset visuals.</h3>
+                <h3><b><em>Thank you for selecting this hit and participating in the study!</em></b></h3>
+            </div>
+            <div class="intro-instr">
+                <h4><b>INSTRUCTIONS</b></h4>
+                <h4>
+                    Once normal colour vision has been confirmed, you will be directed to the next page where you will be asked to read and accept the Participation Information Form
+                    <br>Once this has been read and accepted you will be directed to the task
+                </h4>
+                <h4><em>The Task</em></h4>
+                <h4>
+                    The task consists of a choice between two bar charts. These bar charts are identical other than the differing colouring between the charts.
+                    <br>Select the chart that you believe has a more <em>aesthetically preferable</em> colour combination.
+                    <br><em>Aesthetic Preference</em> can be described as how much you prefer the combination of colours as a whole.
+                    <br>Select the chart by either clicking on the chart using your mouse or pressing the left arrow key in order to select the left chart or the right arrow key in order to select the right chart.
+                    <br>You will got through *insert number of choices here*. Once you have gone through all the choices you will be directed to a page in which you will be given a code. Please enter this code as your HIT survey code in order for the process to be completed.
+                </h4>
+            </div>
+            <div class="colour-blind-check">
+                <h4>
+                    At the moment the study has been created for participants with <b>normal colour vision</b>.
+                    <br>Hopefully the study will be adapted in the future for those with colour vision deficiencies.
+                    <br>In order to continue please check the box below confirm that you have <b>normal colour deficiencies</b> (i.e. you do not deal with any colour vision deficiencies such as deuteranomaly {or red-green colour blindness}).
+                    <br>If you do suffer from a colour vision deficiency and are unable to continue with the study please return the HIT.
+                </h4>
+                <label class="container"> I can confirm that I have normal colour vision
+                    <input type="checkbox" id="colour-check">
+                    <input type="button" value="submit" onclick="confirmVision()">
+                    <span class="checkmark"></span>
+                </label>
+                <script>
+                    function confirmVision(){
+                        if(document.getElementById("colour-check").checked){
+                            window.location.href = "/consent-form";
+                        } else {
+                            alert("If you have a colour revision deficiency please return the HIT.");
+                            return false;
+                        }
+                    }
+                </script>
+            </div>
+        </header>
+    </div>
+</div>
+</body>
+</html>
