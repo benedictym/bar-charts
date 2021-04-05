@@ -7,7 +7,7 @@
     <title>COLOUR PREFERENCE TASK</title>
     <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/bar-charts-stylesheet.css">
-    <script src="/lineages.js" defer></script>
+<!--    <script src="/lineages.js" defer></script>-->
 
 </head>
 
@@ -37,16 +37,16 @@
                     <input type="button" value="submit" onclick="confirmRead()">
                     <span class="checkmark"></span>
                 </label>
-<!--                <script>-->
-<!--                    function confirmRead() {-->
-<!--                        if(document.getElementById("participation-sheet").checked){-->
-<!--                            window.location.href = "/task";-->
-<!--                        } else {-->
-<!--                            alert("If you do not accept the conditions please return the HIT.");-->
-<!--                            return false;-->
-<!--                        }-->
-<!--                    }-->
-<!--                </script>-->
+                <script>
+                    function confirmRead() {
+                        if(document.getElementById("participation-sheet").checked){
+                            window.location.href = "/task";
+                        } else {
+                            alert("If you do not accept the conditions please return the HIT.");
+                            return false;
+                        }
+                    }
+                </script>
             </div>
         </header>
     </div>

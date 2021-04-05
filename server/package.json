@@ -21,6 +21,8 @@
   "devDependencies": {
     "connect-flash": "^0.1.1",
     "express-session": "^1.17.1",
+    "mime-types": "^2.1.30",
+    "mimetypes": "^0.1.1",
     "mongodb": "^3.6.5"
   }
 }

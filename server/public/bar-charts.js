@@ -1,4 +1,3 @@
-
 class BarChart {
     constructor(lightness, chromatic_a, chromatic_b) {
         this.lightness = lightness;
@@ -95,7 +94,7 @@ class BarChart {
     }
 }
 
-class Chain{
+export class Chain{
     constructor(chain_no) {
         this.chain_no = chain_no;
         this.selected_colours = [];
@@ -164,6 +163,9 @@ function change(chain) {
 
         if (current_chart == null) {
             let hue_range;
+            let light_vals;
+            let a_vals;
+            let b_vals;
 
             // generate initial charts
             function generate_colours(hue_range, no_bars = 5, saturated = true, light = true) {
@@ -337,7 +339,7 @@ function change(chain) {
         function change_current(){
             console.log(new_chart.toString());
             chain.add_results(new_chart);
-            [current_ellipse, new_chart, side] = redraw(chain);
+            [current_chart, new_chart, side] = redraw(chain);
         }
         document.body.onkeydown = function (e) {
             console.log(chain.print_chain());
@@ -427,9 +429,10 @@ function gelman_rubin (chains, bar_parameter){
     return R;
 }
 
-async function start_chain(chains) {
+export async function start_chain(chains) {
+    // let finished = false
     let i = 0;
-    while (i <= 10000){
+    while (i <= 100){
         let chain_no = i % chains.length;
         await change(chains[chain_no]);
         if(i>20){
@@ -439,8 +442,28 @@ async function start_chain(chains) {
         }
         i++;
     }
+    // if(finished){
+    //     return finished;
+    // }
 }
+// start_chain = async (chains) => {
+//     let finished = false
+//     let i = 0;
+//     while (i <= 100) {
+//         let chain_no = i % chains.length;
+//         await change(chains[chain_no]);
+//         if (i > 20) {
+//             gelman_rubin(chains, 'lightness');
+//             gelman_rubin(chains, 'chromatic_a');
+//             gelman_rubin(chains, 'chromatic_b');
+//         }
+//         i++;
+//     }
+//     if (finished) {
+//         return finished;
+//     }
+// }
 
 // start_chain(chains);
-
-
+// module.exports = start_chain;
+// module.exports = Chain;

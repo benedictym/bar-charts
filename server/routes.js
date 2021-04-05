@@ -14,7 +14,4 @@ router.get("/task", function (req, res) {
     res.render("task");
 })
 
-router.get
-
-
 module.exports = router;
