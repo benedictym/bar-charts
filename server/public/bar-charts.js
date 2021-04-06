@@ -363,7 +363,7 @@ function change(chain) {
         }
     })
 }
-const chains = [new Chain(0), new Chain(1), new Chain(2), new Chain(3), new Chain(4)];
+// const chains = [new Chain(0), new Chain(1), new Chain(2), new Chain(3), new Chain(4)];
 
 function gelman_rubin (chains, bar_parameter){
     // M = chain length
@@ -446,23 +446,7 @@ export async function start_chain(chains) {
     //     return finished;
     // }
 }
-// start_chain = async (chains) => {
-//     let finished = false
-//     let i = 0;
-//     while (i <= 100) {
-//         let chain_no = i % chains.length;
-//         await change(chains[chain_no]);
-//         if (i > 20) {
-//             gelman_rubin(chains, 'lightness');
-//             gelman_rubin(chains, 'chromatic_a');
-//             gelman_rubin(chains, 'chromatic_b');
-//         }
-//         i++;
-//     }
-//     if (finished) {
-//         return finished;
-//     }
-// }
+
 
 // start_chain(chains);
 // module.exports = start_chain;

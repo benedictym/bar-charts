@@ -1,10 +1,10 @@
 // const Chain = require("server/public/bar-charts");
 // const start_chain = require("server/public/bar-charts");
-import {Chain} from "./bar-charts.js";
-import {start_chain} from "./bar-charts.js";
+<%
+import {Chain} from "../public/bar-charts";
+import {start_chain} from "../public/bar-charts";
 // import 'socket.io'
 // const url = 'wss://wss://flavio-websockets-server-example.glitch.me'
-
 
 function initiateLineage(lineages) {
     let lineage_no = 0;
@@ -24,7 +24,8 @@ function initiateLineage(lineages) {
     if (chains.length === 0) {
         chains = [new Chain(0), new Chain(1), new Chain(2), new Chain(3), new Chain(4)];
         current_lineage.add_chains(chains);
-        }
-     start_chain(chains);
+    }
+    start_chain(chains);
+
 }
-// initiateLineage()
+ %>
