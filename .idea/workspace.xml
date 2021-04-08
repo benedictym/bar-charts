@@ -23,15 +23,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56e09eb9-fd9c-478c-9f92-23463dfc2c74" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server/execfile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/public/lineage_server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/views/lineages.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/public/lineages.bundles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/views/bar_charts.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/bar_chart_server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/bar_chart_server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/execfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/execfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/body-parser/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/body-parser/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/public/bar-charts.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/public/bar-charts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/public/lineage_server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/public/lineage_server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/public/lineages.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/public/lineages.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/views/task.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server/views/task.ejs" afterDir="false" />
@@ -83,6 +85,7 @@
     <property name="nodejs_interpreter_path" value="$APPLICATION_CONFIG_DIR$/node/node-v12.13.1-darwin-x64/bin/node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -192,6 +195,11 @@
       <workItem from="1617547298830" duration="37570000" />
       <workItem from="1617702146807" duration="4000" />
       <workItem from="1617718300160" duration="7819000" />
+      <workItem from="1617740083961" duration="7421000" />
+      <workItem from="1617821127483" duration="830000" />
+      <workItem from="1617828468411" duration="82000" />
+      <workItem from="1617842045736" duration="340000" />
+      <workItem from="1617876359552" duration="3677000" />
     </task>
     <servers />
   </component>
@@ -225,11 +233,11 @@
     <state x="313" y="23" width="1071" height="772" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.804@0.23.1440.804" timestamp="1617551036235" />
     <state x="369" y="82" width="1071" height="747" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.806@0.23.1440.806" timestamp="1613054290984" />
     <state x="369" y="85" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.808@0.23.1440.808" timestamp="1613054203995" />
-    <state x="766" y="175" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1612639654384">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="766" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1617743347004">
+      <screen x="0" y="23" width="1440" height="804" />
     </state>
     <state x="766" y="175" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1612639654384" />
-    <state x="766" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.804@0.23.1440.804" timestamp="1612639633932" />
+    <state x="766" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.804@0.23.1440.804" timestamp="1617743347004" />
     <state x="0" y="23" key="FileDocumentManager.FileCacheConflict" timestamp="1617299855312">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
@@ -323,10 +331,10 @@
       <screen x="0" y="23" width="1440" height="804" />
     </state>
     <state x="0" y="0" width="1440" height="900" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.804@0.23.1440.804" timestamp="1617652103183" />
-    <state x="38" y="23" width="813" height="785" key="dock-window-1" timestamp="1617721445364">
+    <state x="0" y="23" width="742" height="804" key="dock-window-1" timestamp="1617893287873">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
-    <state x="38" y="23" width="813" height="785" key="dock-window-1/0.23.1440.804@0.23.1440.804" timestamp="1617721445364" />
+    <state x="0" y="23" width="742" height="804" key="dock-window-1/0.23.1440.804@0.23.1440.804" timestamp="1617893287873" />
     <state x="0" y="23" width="1074" height="803" key="dock-window-2" timestamp="1617557276313">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
@@ -373,12 +381,6 @@
           <url>file://$PROJECT_DIR$/server/bar_chart_server.js</url>
           <line>4</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/server/routes.js</url>
-          <line>15</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

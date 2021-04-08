@@ -1,3 +1,4 @@
+<%
 class BarChart {
     constructor(lightness, chromatic_a, chromatic_b) {
         this.lightness = lightness;
@@ -37,44 +38,44 @@ class BarChart {
         const ctx = canvas.getContext('2d');
 
         new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: title_used,
-                    datasets: [{
-                        data: bars_used,
-                        backgroundColor: this.convert_lab_rgb(this.lightness, this.chromatic_a, this.chromatic_b),
-                        borderColor: this.convert_lab_rgb(this.lightness, this.chromatic_a, this.chromatic_b,1),
-                        borderWidth: 1
+                    type: 'bar',
+                    data: {
+                        labels: title_used,
+                        datasets: [{
+                            data: bars_used,
+                            backgroundColor: this.convert_lab_rgb(this.lightness, this.chromatic_a, this.chromatic_b),
+                            borderColor: this.convert_lab_rgb(this.lightness, this.chromatic_a, this.chromatic_b,1),
+                            borderWidth: 1
 
-                    }]
-                },
-                options: {
-                    // removes labels on graph
-                    legend: {display: false},
-                    scales: {
-                        xAxes: [{
-                            // removes axis label
-                            ticks: {display:false},
-                            // removes minor gridlines
-                            gridLines: {drawOnChartArea: false}
-                        }],
-                        yAxes:[{
-                            ticks: {
-                                display: false,
-                                beginAtZero: true
-                            },
-                            gridLines: {drawOnChartArea: false}
                         }]
                     },
-                    // removes information over hover
-                    tooltips: {enabled: false},
-                    events: ['click'],
-                    hover: {mode: null},
-                    animation: {
-                        duration: 600
+                    options: {
+                        // removes labels on graph
+                        legend: {display: false},
+                        scales: {
+                            xAxes: [{
+                                // removes axis label
+                                ticks: {display:false},
+                                // removes minor gridlines
+                                gridLines: {drawOnChartArea: false}
+                            }],
+                            yAxes:[{
+                                ticks: {
+                                    display: false,
+                                    beginAtZero: true
+                                },
+                                gridLines: {drawOnChartArea: false}
+                            }]
+                        },
+                        // removes information over hover
+                        tooltips: {enabled: false},
+                        events: ['click'],
+                        hover: {mode: null},
+                        animation: {
+                            duration: 600
+                        }
                     }
                 }
-            }
         );
     }
 
@@ -393,7 +394,7 @@ function gelman_rubin (chains, bar_parameter){
         let posterior_mean = (bar_parameters.length !== 0) ? (1/bar_parameters.length) * sum_params : 0
         posterior_means.push(posterior_mean);
         let var_params = bar_parameters.reduce((total, current) =>
-            total + Math.pow(current - posterior_mean,2), 0);
+                total + Math.pow(current - posterior_mean,2), 0);
         let intraChain_variance = (bar_parameters.length !== 0) ? (1/(bar_parameters.length - 1)) * var_params : 0;
         intraChain_variances.push(intraChain_variance);
     })
@@ -418,9 +419,9 @@ function gelman_rubin (chains, bar_parameter){
     let chain_squared = posterior_means.map(e => Math.pow(e,2));
     let chain_squared_mean = (1/M) * chain_squared.reduce((total, current) => total + current);
     let var_V =Math.pow((N-1)/N,2) * (1/M) * si_var +
-       Math.pow((M+1)/(M*N),2) * (2/(M-1)) * Math.pow(B,2) +
-        2*(((M+1)*(N-1))/M*Math.pow(N,2)) *
-        (N/M) * (cov(intraChain_variances, si_mean, chain_squared, chain_squared_mean) - 2*x_mean*cov(intraChain_variances, si_mean, posterior_means, x_mean));
+            Math.pow((M+1)/(M*N),2) * (2/(M-1)) * Math.pow(B,2) +
+            2*(((M+1)*(N-1))/M*Math.pow(N,2)) *
+            (N/M) * (cov(intraChain_variances, si_mean, chain_squared, chain_squared_mean) - 2*x_mean*cov(intraChain_variances, si_mean, posterior_means, x_mean));
     let d = 2*V / var_V;
     // let R = Math.sqrt((V/W));
     let R = Math.sqrt((V/W) * ((d+3)/(d+1)));
@@ -447,6 +448,4 @@ export async function start_chain(chains) {
     // }
 }
 
-
-// start_chain(chains);
-
+ %>

@@ -4,7 +4,30 @@ import {Chain} from "./bar-charts.js";
 import {start_chain} from "./bar-charts.js";
 // import 'socket.io'
 // const url = 'wss://wss://flavio-websockets-server-example.glitch.me'
+// const vr = require('vanilla-require')(__dirname);
+// const {Chain} = vr.require('./bar-charts.js');
+// const {start_chain} = vr.require('./bar-charts.js');
+// const execfile = require('../execfile');
+// const bc = execfile("./barchart.js");
+// const fs = require("fs");
 
+
+class Lineages {
+    constructor(lineage_id) {
+        this.lineage_id = lineage_id;
+        this.occupied = false;
+        this.chains = [];
+    }
+
+    add_chains(add_chains){
+        this.chains.push(add_chains);
+    }
+
+    lineageState(){
+    }
+}
+
+const lineages = [new Lineages(1)];
 
 function initiateLineage(lineages) {
     let lineage_no = 0;
@@ -27,4 +50,5 @@ function initiateLineage(lineages) {
         }
      start_chain(chains);
 }
-// initiateLineage()
+
+initiateLineage(lineages);

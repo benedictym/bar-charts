@@ -5,6 +5,9 @@ const path = require('path');
 const app = express();
 const routes = require('./routes');
 const sassMiddleware = require('node-sass-middleware');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+
 // const WebSocket = require('ws');
 // const wss = new WebSocket.Server({port: 8080});
 // const passport = require('passport');
@@ -32,6 +35,11 @@ app.set("view engine", "ejs");
 //     outputStyle: 'compressed',
 //     sourceMap: true
 // }));
+app.use(cors());
+// configure body parsing middleware
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
 app.use(express.static(__dirname + '/public'));
 app.use(routes);
 app.listen(app.get("port"), () => {
