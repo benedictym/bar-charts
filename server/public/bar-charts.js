@@ -1,4 +1,4 @@
-class BarChart {
+export class BarChart {
     constructor(lightness, chromatic_a, chromatic_b) {
         this.lightness = lightness;
         this.chromatic_a = chromatic_a;
@@ -12,6 +12,8 @@ class BarChart {
         const lightness_check = (el) => (el >= 15 && el <= 90);
         const chromaticA_check = (el) => (el >= -86.185 && el <= 96.254);
         const chromaticB_check = (el) => (el >= -107.863 && el <= 84.482);
+        // const coord_check = this.lightness.every(lightness_check) && this.chromatic_a.every(chromaticA_check) && this.chromatic_b.every(chromaticB_check);
+        // const len_check = this.lightness.length === this.chromatic_b.length === this.chro
         return (this.lightness.every(lightness_check) && this.chromatic_a.every(chromaticA_check) && this.chromatic_b.every(chromaticB_check));
     }
 
@@ -432,7 +434,7 @@ function gelman_rubin (chains, bar_parameter){
 export async function start_chain(chains) {
     // let finished = false
     let i = 0;
-    while (i <= 100){
+    while (i <= 10){
         let chain_no = i % chains.length;
         await change(chains[chain_no]);
         if(i>20){
@@ -442,6 +444,9 @@ export async function start_chain(chains) {
         }
         i++;
     }
+    // window.location.href = "/exit";
+    return chains;
+
     // if(finished){
     //     return finished;
     // }

@@ -1,7 +1,6 @@
 // const Chain = require("server/public/bar-charts");
 // const start_chain = require("server/public/bar-charts");
-import {Chain} from "./bar-charts.js";
-import {start_chain} from "./bar-charts.js";
+import {BarChart, Chain, start_chain} from "./bar-charts.js";
 // import 'socket.io'
 // const url = 'wss://wss://flavio-websockets-server-example.glitch.me'
 // const vr = require('vanilla-require')(__dirname);
@@ -27,28 +26,60 @@ class Lineages {
     }
 }
 
-const lineages = [new Lineages(1)];
-
-function initiateLineage(lineages) {
-    let lineage_no = 0;
-
-    console.log(lineage_no);
-    let current_lineage = lineages[lineage_no];
-    if (current_lineage.occupied){
-        let j = 0;
-        while(j < 6){
-            current_lineage = lineage_no[lineage_no + j];
-            if (!current_lineage.occupied){break;}
-        }
-    } else{
-        current_lineage.occupied = true;
-    }
-    let chains = current_lineage.chains;
-    if (chains.length === 0) {
-        chains = [new Chain(0), new Chain(1), new Chain(2), new Chain(3), new Chain(4)];
-        current_lineage.add_chains(chains);
-        }
-     start_chain(chains);
+function isEmpty(obj){
+    return Object.keys(obj).length === 0;
 }
 
-initiateLineage(lineages);
+const loadLineage = async () => {
+    const response = await fetch("http://localhost:8080/task/json");
+    const res = await response.json();
+    return res;
+}
+
+const postLineage = (lineage_json) => {
+    fetch("http://localhost:8080/task/json", {
+        headers: {'Content-Type': "application/json"},
+        method: 'post',
+        body: lineage_json
+    })
+        .then(function (res){console.log(res)})
+        .catch(function (res) {console.log(res)});
+
+    window.location.href = "/exit";
+}
+
+async function initiateLineage() {
+
+    const current_lineage = await loadLineage();
+    if(isEmpty(current_lineage)){
+        window.location.href = "/unavailable";
+    }
+    let lineage_no = current_lineage.lineage_id;
+
+    console.log(lineage_no);
+
+    // current_lineage.occupied = true;
+
+    let chains = current_lineage.chains;
+    let chain_list;
+    if (chains.length === 0) {
+        chain_list = [new Chain(0), new Chain(1), new Chain(2), new Chain(3), new Chain(4)];
+    } else{
+        chain_list = [];
+        for (let i = 0; i < chains.length; i++){
+            let new_chain = new Chain(i);
+            for(let j = 0; j < chains[i]['selected_colours'].length; j++){
+                let bar_chart = chains[i]['selected_colours'][j];
+                let new_chart = new BarChart(bar_chart.lightness, bar_chart.chromatic_a, bar_chart.chromatic_b);
+                new_chain.add_results(new_chart);
+            }
+            chain_list.push(new_chain);
+        }
+    }
+    current_lineage.chains = await start_chain(chain_list);
+    console.log(current_lineage.chains);
+    const lineage_json = JSON.stringify(current_lineage);
+    postLineage(lineage_json);
+}
+
+initiateLineage();
