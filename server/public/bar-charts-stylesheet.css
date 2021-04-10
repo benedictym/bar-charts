@@ -120,6 +120,14 @@ button:visited {
     align-content: center;
 }
 
+.surveyCode{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+}
+
 a:link{
     text-decoration: none;
 }

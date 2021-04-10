@@ -11,20 +11,20 @@ import {BarChart, Chain, start_chain} from "./bar-charts.js";
 // const fs = require("fs");
 
 
-class Lineages {
-    constructor(lineage_id) {
-        this.lineage_id = lineage_id;
-        this.occupied = false;
-        this.chains = [];
-    }
-
-    add_chains(add_chains){
-        this.chains.push(add_chains);
-    }
-
-    lineageState(){
-    }
-}
+// class Lineages {
+//     constructor(lineage_id) {
+//         this.lineage_id = lineage_id;
+//         this.occupied = false;
+//         this.chains = [];
+//     }
+//
+//     add_chains(add_chains){
+//         this.chains.push(add_chains);
+//     }
+//
+//     lineageState(){
+//     }
+// }
 
 function isEmpty(obj){
     return Object.keys(obj).length === 0;
@@ -48,6 +48,17 @@ const postLineage = (lineage_json) => {
     window.location.href = "/exit";
 }
 
+const quickSave = (lineage_json) => {
+    window.addEventListener("beforeunload", function () {
+        fetch("http://localhost:8080/task/json", {
+            headers: {'Content-Type': "application/json"},
+            method: 'post',
+            body: lineage_json
+        })
+            .then(function (res){console.log(res)})
+            .catch(function (res) {console.log(res)});
+    })
+}
 async function initiateLineage() {
 
     const current_lineage = await loadLineage();
@@ -57,8 +68,6 @@ async function initiateLineage() {
     let lineage_no = current_lineage.lineage_id;
 
     console.log(lineage_no);
-
-    // current_lineage.occupied = true;
 
     let chains = current_lineage.chains;
     let chain_list;
@@ -79,6 +88,7 @@ async function initiateLineage() {
     current_lineage.chains = await start_chain(chain_list);
     console.log(current_lineage.chains);
     const lineage_json = JSON.stringify(current_lineage);
+    quickSave(lineage_json);
     postLineage(lineage_json);
 }
 

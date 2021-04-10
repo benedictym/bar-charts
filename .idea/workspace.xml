@@ -23,15 +23,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56e09eb9-fd9c-478c-9f92-23463dfc2c74" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server/views/unavailable.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/bar_chart_server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/bar_chart_server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/public/bar-charts-stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/server/public/bar-charts-stylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/public/bar-charts.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/public/bar-charts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/public/lineage_server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/public/lineage_server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/public/lineages.bundles.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/public/lineages.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/public/lineages.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/views/bar_charts.ejs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/views/colour-test.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server/public/exit.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/views/exit.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server/views/exit.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/views/unavailable.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server/views/unavailable.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +198,7 @@
       <workItem from="1617828468411" duration="82000" />
       <workItem from="1617842045736" duration="340000" />
       <workItem from="1617876359552" duration="21197000" />
-      <workItem from="1618000735661" duration="2982000" />
+      <workItem from="1618000735661" duration="22027000" />
     </task>
     <servers />
   </component>
@@ -218,6 +221,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="720" y="256" key="#Notifications" timestamp="1618068063393">
+      <screen x="0" y="23" width="1440" height="804" />
+    </state>
+    <state x="720" y="256" key="#Notifications/0.23.1440.804@0.23.1440.804" timestamp="1618068063393" />
     <state x="695" y="232" key="#Web_Browsers" timestamp="1617289532545">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
@@ -229,11 +236,11 @@
     <state x="313" y="23" width="1071" height="772" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.804@0.23.1440.804" timestamp="1617551036235" />
     <state x="369" y="82" width="1071" height="747" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.806@0.23.1440.806" timestamp="1613054290984" />
     <state x="369" y="85" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.808@0.23.1440.808" timestamp="1613054203995" />
-    <state x="766" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1617743347004">
+    <state x="766" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1618007712651">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
     <state x="766" y="175" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1612639654384" />
-    <state x="766" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.804@0.23.1440.804" timestamp="1617743347004" />
+    <state x="766" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.804@0.23.1440.804" timestamp="1618007712651" />
     <state x="0" y="23" key="FileDocumentManager.FileCacheConflict" timestamp="1617299855312">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
@@ -323,22 +330,26 @@
     </state>
     <state x="458" y="62" width="913" height="722" key="SettingsEditor/0.23.1440.804@0.23.1440.804" timestamp="1617583022308" />
     <state x="458" y="62" key="SettingsEditor/0.23.1440.806@0.23.1440.806" timestamp="1612547407239" />
-    <state x="0" y="0" width="1440" height="900" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1617652103183">
+    <state x="0" y="0" width="1440" height="900" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1618076070126">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
-    <state x="0" y="0" width="1440" height="900" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.804@0.23.1440.804" timestamp="1617652103183" />
-    <state x="0" y="23" width="742" height="804" key="dock-window-1" timestamp="1617893287873">
+    <state x="0" y="0" width="1440" height="900" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.804@0.23.1440.804" timestamp="1618076070126" />
+    <state x="802" y="123" width="538" height="604" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1618076070127">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
-    <state x="0" y="23" width="742" height="804" key="dock-window-1/0.23.1440.804@0.23.1440.804" timestamp="1617893287873" />
-    <state x="0" y="23" width="706" height="785" key="dock-window-2" timestamp="1617996028764">
+    <state x="802" y="123" width="538" height="604" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/0.23.1440.804@0.23.1440.804" timestamp="1618076070127" />
+    <state x="190" y="48" width="627" height="586" key="dock-window-1" timestamp="1618010644688">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
-    <state x="0" y="23" width="706" height="785" key="dock-window-2/0.23.1440.804@0.23.1440.804" timestamp="1617996028764" />
-    <state x="20" y="41" width="706" height="785" key="dock-window-3" timestamp="1617996028765">
+    <state x="190" y="48" width="627" height="586" key="dock-window-1/0.23.1440.804@0.23.1440.804" timestamp="1618010644688" />
+    <state x="0" y="23" width="723" height="803" key="dock-window-2" timestamp="1618071598391">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
-    <state x="20" y="41" width="706" height="785" key="dock-window-3/0.23.1440.804@0.23.1440.804" timestamp="1617996028765" />
+    <state x="0" y="23" width="723" height="803" key="dock-window-2/0.23.1440.804@0.23.1440.804" timestamp="1618071598391" />
+    <state x="54" y="72" width="609" height="739" key="dock-window-3" timestamp="1618080327938">
+      <screen x="0" y="23" width="1440" height="804" />
+    </state>
+    <state x="54" y="72" width="609" height="739" key="dock-window-3/0.23.1440.804@0.23.1440.804" timestamp="1618080327938" />
     <state x="412" y="23" width="582" height="785" key="dock-window-4" timestamp="1617997054690">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
@@ -372,11 +383,6 @@
           <url>file://$PROJECT_DIR$/Circle Test/circle-test.js</url>
           <line>156</line>
           <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/server/bar_chart_server.js</url>
-          <line>4</line>
-          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

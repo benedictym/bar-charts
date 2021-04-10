@@ -443,6 +443,9 @@ export async function start_chain(chains) {
             gelman_rubin(chains, 'chromatic_b');
         }
         i++;
+        // window.addEventListener("beforeunload", (e) => {
+        //     break;
+        // }, false)
     }
     // window.location.href = "/exit";
     return chains;
@@ -451,7 +454,6 @@ export async function start_chain(chains) {
     //     return finished;
     // }
 }
-
 
 // start_chain(chains);
 
