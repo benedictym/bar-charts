@@ -431,8 +431,32 @@ function gelman_rubin (chains, bar_parameter){
     return R;
 }
 
-export async function start_chain(chains) {
+export async function start_chain(chains, current_lineage) {
     // let finished = false
+    // function unload_it (e) {
+    //     current_lineage.chains = chains;
+    //     const lineage_json = JSON.stringify(current_lineage);
+    //     fetch("http://localhost:8080/task/json", {
+    //         headers: {'Content-Type': "application/json"},
+    //         method: 'post',
+    //         body: lineage_json
+    //     })
+    //         .then(function (res){console.log(res)})
+    //         .catch(function (res) {console.log(res)});
+    // }
+    // window.removeEventListener("beforeunload", unload_it(), false);
+    window.addEventListener("beforeunload", (e) => {
+        current_lineage.chains = chains;
+        const lineage_json = JSON.stringify(current_lineage);
+        fetch("http://localhost:8080/task/json", {
+            headers: {'Content-Type': "application/json"},
+            method: 'post',
+            body: lineage_json
+        })
+            .then(function (res){console.log(res)})
+            .catch(function (res) {console.log(res)});
+    }, false);
+
     let i = 0;
     while (i <= 10){
         let chain_no = i % chains.length;
@@ -443,12 +467,18 @@ export async function start_chain(chains) {
             gelman_rubin(chains, 'chromatic_b');
         }
         i++;
-        // window.addEventListener("beforeunload", (e) => {
-        //     break;
-        // }, false)
     }
+
+    window.location.href = "/exit";
+
+    // current_lineage.chains = chains;
+    // const lineage_json = JSON.stringify(current_lineage);
+    // postLineage(lineage_json);
     // window.location.href = "/exit";
-    return chains;
+    // window.removeEventListener("beforeunload",(e) => {
+    //     console.log('pls');
+    // }, false);
+    // return chains;
 
     // if(finished){
     //     return finished;

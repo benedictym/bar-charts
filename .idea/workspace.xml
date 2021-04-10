@@ -24,17 +24,9 @@
   <component name="ChangeListManager">
     <list default="true" id="56e09eb9-fd9c-478c-9f92-23463dfc2c74" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/bar_chart_server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/bar_chart_server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/public/bar-charts-stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/server/public/bar-charts-stylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/public/bar-charts.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/public/bar-charts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/public/lineages.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/public/lineages.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/views/bar_charts.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/views/colour-test.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server/public/exit.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/views/exit.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server/views/exit.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/views/unavailable.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server/views/unavailable.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +190,7 @@
       <workItem from="1617828468411" duration="82000" />
       <workItem from="1617842045736" duration="340000" />
       <workItem from="1617876359552" duration="21197000" />
-      <workItem from="1618000735661" duration="22027000" />
+      <workItem from="1618000735661" duration="27455000" />
     </task>
     <servers />
   </component>
@@ -350,14 +342,14 @@
       <screen x="0" y="23" width="1440" height="804" />
     </state>
     <state x="54" y="72" width="609" height="739" key="dock-window-3/0.23.1440.804@0.23.1440.804" timestamp="1618080327938" />
-    <state x="412" y="23" width="582" height="785" key="dock-window-4" timestamp="1617997054690">
+    <state x="0" y="23" width="720" height="803" key="dock-window-4" timestamp="1618081500765">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
-    <state x="412" y="23" width="582" height="785" key="dock-window-4/0.23.1440.804@0.23.1440.804" timestamp="1617997054690" />
-    <state x="59" y="23" width="773" height="803" key="dock-window-5" timestamp="1618000867539">
+    <state x="0" y="23" width="720" height="803" key="dock-window-4/0.23.1440.804@0.23.1440.804" timestamp="1618081500765" />
+    <state x="242" y="23" width="724" height="655" key="dock-window-5" timestamp="1618085931716">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
-    <state x="59" y="23" width="773" height="803" key="dock-window-5/0.23.1440.804@0.23.1440.804" timestamp="1618000867539" />
+    <state x="242" y="23" width="724" height="655" key="dock-window-5/0.23.1440.804@0.23.1440.804" timestamp="1618085931716" />
     <state x="506" y="82" width="738" height="760" key="dock-window-6" timestamp="1617583490559">
       <screen x="0" y="23" width="1440" height="804" />
     </state>

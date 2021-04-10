@@ -1,30 +1,6 @@
 // const Chain = require("server/public/bar-charts");
 // const start_chain = require("server/public/bar-charts");
 import {BarChart, Chain, start_chain} from "./bar-charts.js";
-// import 'socket.io'
-// const url = 'wss://wss://flavio-websockets-server-example.glitch.me'
-// const vr = require('vanilla-require')(__dirname);
-// const {Chain} = vr.require('./bar-charts.js');
-// const {start_chain} = vr.require('./bar-charts.js');
-// const execfile = require('../execfile');
-// const bc = execfile("./barchart.js");
-// const fs = require("fs");
-
-
-// class Lineages {
-//     constructor(lineage_id) {
-//         this.lineage_id = lineage_id;
-//         this.occupied = false;
-//         this.chains = [];
-//     }
-//
-//     add_chains(add_chains){
-//         this.chains.push(add_chains);
-//     }
-//
-//     lineageState(){
-//     }
-// }
 
 function isEmpty(obj){
     return Object.keys(obj).length === 0;
@@ -48,17 +24,18 @@ const postLineage = (lineage_json) => {
     window.location.href = "/exit";
 }
 
-const quickSave = (lineage_json) => {
-    window.addEventListener("beforeunload", function () {
-        fetch("http://localhost:8080/task/json", {
-            headers: {'Content-Type': "application/json"},
-            method: 'post',
-            body: lineage_json
-        })
-            .then(function (res){console.log(res)})
-            .catch(function (res) {console.log(res)});
-    })
-}
+// const quickSave = (lineage_json) => {
+//     window.addEventListener("beforeunload", function () {
+//         fetch("http://localhost:8080/task/json", {
+//             headers: {'Content-Type': "application/json"},
+//             method: 'post',
+//             body: lineage_json
+//         })
+//             .then(function (res){console.log(res)})
+//             .catch(function (res) {console.log(res)});
+//     })
+// }
+
 async function initiateLineage() {
 
     const current_lineage = await loadLineage();
@@ -85,11 +62,13 @@ async function initiateLineage() {
             chain_list.push(new_chain);
         }
     }
-    current_lineage.chains = await start_chain(chain_list);
-    console.log(current_lineage.chains);
-    const lineage_json = JSON.stringify(current_lineage);
-    quickSave(lineage_json);
-    postLineage(lineage_json);
+
+    // current_lineage.chains = await start_chain(chain_list, current_lineage);
+    await start_chain(chain_list, current_lineage);
+    // console.log(current_lineage.chains);
+    // const lineage_json = JSON.stringify(current_lineage);
+    // // quickSave(lineage_json);
+    // postLineage(lineage_json);
 }
 
 initiateLineage();
