@@ -1,0 +1,7 @@
+runtime: nodejs14
+
+manual_scaling:
+  instances: 1
+
+env_variables:
+  GOOGLE_BUCKET: "bar-colour.appspot.com"

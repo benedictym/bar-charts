@@ -1,0 +1,35 @@
+{
+  "name": "honours_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bar_chart_server.js",
+  "scripts": {
+    "start": "node bar_chart_server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/storage": "^5.8.3",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "chart.js": "^2.9.4",
+    "color-space": "^1.16.0",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "passport": "^0.4.1",
+    "path": "^0.12.7",
+    "ws": "^7.4.4"
+  },
+  "devDependencies": {
+    "connect-flash": "^0.1.1",
+    "mime-types": "^2.1.30",
+    "mimetypes": "^0.1.1",
+    "mongodb": "^3.6.5",
+    "socket.io": "^4.0.1",
+    "vanilla-require": "^1.0.2"
+  }
+}

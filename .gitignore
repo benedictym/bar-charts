@@ -1,11 +1,11 @@
-server/node_modules/
+server_old/node_modules/
 /google-cloud-sdk
 google-cloud-sdk
 build
 npm-debug.log
 .env
 .DS_Store
-server/public/mongo_pass.txt
+server_old/public/mongo_pass.txt
 
 # Logs
 logs
