@@ -3,6 +3,9 @@ export class BarChart {
         this.lightness = lightness;
         this.chromatic_a = chromatic_a;
         this.chromatic_b = chromatic_b;
+        this.rechosen = false;
+        this.no_rejections = 0;
+        this.rejectionReason = [];
         this.no_bars = lightness.length;
     }
 
@@ -12,11 +15,29 @@ export class BarChart {
         const lightness_check = (el) => (el >= 15 && el <= 90);
         const chromaticA_check = (el) => (el >= -86.185 && el <= 96.254);
         const chromaticB_check = (el) => (el >= -107.863 && el <= 84.482);
+        // const lightness_check = (el) => (el >= 0 && el <= 100);
+        // const chromaticA_check = (el) => (el >= -150 && el <= 150);
+        // const chromaticB_check = (el) => (el >= -150 && el <= 150);
+
         // const coord_check = this.lightness.every(lightness_check) && this.chromatic_a.every(chromaticA_check) && this.chromatic_b.every(chromaticB_check);
         // const len_check = this.lightness.length === this.chromatic_b.length === this.chro
         return (this.lightness.every(lightness_check) && this.chromatic_a.every(chromaticA_check) && this.chromatic_b.every(chromaticB_check));
     }
 
+    legal_light(){
+        const lightness_check = (el) => (el >= 15 && el <= 90);
+        return(this.lightness.every(lightness_check));
+    }
+
+    legal_chromA(){
+        const chromaticA_check = (el) => (el >= -86.185 && el <= 96.254);
+        return(this.chromatic_a.every(chromaticA_check));
+    }
+
+    legal_chromB(){
+        const chromaticB_check = (el) => (el >= -107.863 && el <= 84.482);
+        return(this.chromatic_b.every(chromaticB_check));
+    }
     convert_lab_rgb(l, a, b, opacity = 0.6){
         let rgba_array = []
         for (let i = 0; i < l.length; i++) {
@@ -122,10 +143,17 @@ export class Chain{
 const [l_canvas, r_canvas] = document.querySelectorAll('canvas');
 const buttons = document.querySelectorAll('button');
 
+// left is 0
+// right is 1
+let sides = "";
+let session_chains = {};
+// let autoRejections = [];
+
 function change(chain) {
     let current_chart;
     let new_chart;
     let side;
+    // let chain_no = chain.chain_no;
 
     function redraw(chain){
         let chain_no  = chain.chain_no;
@@ -267,13 +295,16 @@ function change(chain) {
             new_chart = new BarChart(generate_RandArray(90, 15), generate_RandArray(96.254, -86.185), generate_RandArray(84.482, -107.863));
         } else{
             let sd_lightness = current_chart.lightness.map(function (element){
-                return element * 2;
+                // return element * 1;
+                return 10;
             });
             let sd_chromaticA = current_chart.chromatic_a.map(function (element) {
-                return element * 2;
+                // return element * 1;
+                return 30;
             });
             let sd_chromaticB = current_chart.chromatic_b.map(function (element){
-                return element * 2;
+                // return element * 1;
+                return 30;
             });
             let mean_lightness = current_chart.lightness
             let mean_chromaticA = current_chart.chromatic_a;
@@ -283,7 +314,11 @@ function change(chain) {
                 let new_chart;
                 let a = () => {
                     let proposal = Math.round(Math.random())
-                    return (proposal === 0) ? -5 : 5;
+                    return (proposal === 0) ? -3 : 3;
+                    // return (proposal === 0) ? -5 : 5;
+                    // return 0;
+
+
                 }
                 let new_lightness = [];
                 let new_chromaticA = [];
@@ -315,10 +350,29 @@ function change(chain) {
             new_chart = getSample();
             //
             while (!new_chart.is_legal() || new_chart === current_chart){
+                let rejections_so_far = current_chart.no_rejections + 1;
+                current_chart.no_rejections = rejections_so_far;
+                let out_of_bounds = [];
+                if(!new_chart.legal_light()){
+                    out_of_bounds.push("l");
+                }
+                if(!new_chart.legal_chromA()){
+                    out_of_bounds.push("a");
+                }
+                if(!new_chart.legal_chromB()){
+                    out_of_bounds.push("b")
+                }
+
+                current_chart.rejectionReason.push(out_of_bounds);
+                // let auto_rejection = {
+                //     kept: current_chart,
+                //     rejected: new_chart
+                // }
+                // autoRejections.push(auto_rejection);
                 new_chart = getSample();
             }
-
         }
+
         // if you get side 0 draw on left side
         if (side === 0) {
             current_chart.draw_chart(l_canvas);
@@ -335,26 +389,44 @@ function change(chain) {
     return new Promise(resolve => {
         function keep_current(){
             console.log(current_chart.toString());
+            current_chart.rechosen = true;
             chain.add_results(current_chart);
             [current_chart, new_chart, side] = redraw(chain);
         }
         function change_current(){
             console.log(new_chart.toString());
+            current_chart = false;
             chain.add_results(new_chart);
             [current_chart, new_chart, side] = redraw(chain);
         }
         document.body.onkeydown = function (e) {
             console.log(chain.print_chain());
+            // checks which side users is pressing
+            if(e.key === 'ArrowLeft'){
+                sides += 0;
+            } else if (e.key === 'ArrowRight'){
+                sides += 1;
+            }
+
             if((e.key === 'ArrowLeft' && side === 0) || (e.key === 'ArrowRight' && side === 1)){
                 keep_current();
             } else {
                 change_current();
             }
+
             resolve(chain);
         }
+
         for (let i = 0; i < buttons.length; i++) {
             buttons[i].onclick = function () {
                 console.log(chain.print_chain());
+
+                if(buttons[i].id === 'left'){
+                    sides += 0;
+                } else if(buttons[i].id === 'right') {
+                    sides += 1;
+                }
+
                 if ((buttons[i].id === 'left' && side === 0) || (buttons[i].id === 'right' && side === 1)) {
                     keep_current();
                 }else{
@@ -431,7 +503,7 @@ function gelman_rubin (chains, bar_parameter){
     return R;
 }
 
-export async function start_chain(chains, current_lineage) {
+export async function start_chain(chains, current_lineage, cookie) {
     // let finished = false
     // function unload_it (e) {
     //     current_lineage.chains = chains;
@@ -445,9 +517,57 @@ export async function start_chain(chains, current_lineage) {
     //         .catch(function (res) {console.log(res)});
     // }
     // window.removeEventListener("beforeunload", unload_it(), false);
+
+    let valid = true;
+    const total = 20;
     window.addEventListener("beforeunload", (e) => {
+
+        if(chains[0].selected_colours.length > 5) {
+            const lightness = gelman_rubin(chains, 'lightness');
+            const chromatic_a = gelman_rubin(chains, 'chromatic_a');
+            const chromatic_b = gelman_rubin(chains, 'chromatic_b');
+
+            // checks if lineage has converged
+            if ((lightness < 1.2) && (chromatic_a < 1.2) && (chromatic_b < 1.2)) {
+                current_lineage.occupied = "converged";
+            } else {
+                current_lineage.occupied = "false";
+            }
+            current_lineage["gelmanRubin"] = {
+                lightness: gelman_rubin(chains, 'lightness'),
+                chromatic_a: gelman_rubin(chains, 'chromatic_a'),
+                chromatic_b: gelman_rubin(chains, 'chromatic_b')
+            }
+        } else {
+            current_lineage["gelmanRubin"] = "not a long enough chain";
+        }
+
+        // checks at least 10 charts chosen
+        if(i < 10) {valid = false;}
+
+        // if(valid){
+        //     current_lineage["valid"] = true;
+        // } else{
+        //     for(let i = 0; i < chains.length; i++){
+        //         let session_length = session_chains[i];
+        //         (chains[i].selected_colours).splice(-session_length);
+        //     }
+        //     current_lineage["valid"] = false;
+        // }
+
+        if(valid){
+            current_lineage["valid"] = true;
+        } else{
+            current_lineage["valid"] = false;
+        }
         current_lineage.chains = chains;
+        current_lineage["cookie"] = cookie;
+        current_lineage["sides"] = sides;
+        current_lineage["no_choices"] = sides.length;
+        current_lineage["session_len"] = session_chains;
+        // current_lineage["autoRejections"] = autoRejections;
         const lineage_json = JSON.stringify(current_lineage);
+
         fetch("https://bar-colour.nw.r.appspot.com/task/json", {
             headers: {'Content-Type': "application/json"},
             method: 'post',
@@ -455,35 +575,37 @@ export async function start_chain(chains, current_lineage) {
         })
             .then(function (res){console.log(res)})
             .catch(function (res) {console.log(res)});
-    }, false);
+    });
 
     let i = 0;
-    while (i <= 10){
+    while (i < total){
         let chain_no = i % chains.length;
+        let amount_left = total - i;
+        document.getElementById('amount_left').innerHTML = "Choices left: " + "<b>" + amount_left.toString() + "</b>";
         await change(chains[chain_no]);
-        if(i>20){
-            gelman_rubin(chains,'lightness');
-            gelman_rubin(chains, 'chromatic_a');
-            gelman_rubin(chains, 'chromatic_b');
+        // checks length of chain
+        if(!session_chains.hasOwnProperty(chain_no)){
+            session_chains[chain_no] = 1;
+        } else {
+            let chain_len = session_chains[chain_no];
+            session_chains[chain_no] = chain_len + 1;
         }
+
+        let all_left = /(0){22}/.test(sides);
+        let all_right = /(1){22}/.test(sides);
+        let alternate = /(01){11}/.test(sides);
+        if(all_left || all_right || alternate){
+            valid = false;
+            console.log("not completed correctly");
+            break;
+        }
+
+
+        // console.log(session_chains);
         i++;
     }
-
     window.location.href = "/exit";
 
-    // current_lineage.chains = chains;
-    // const lineage_json = JSON.stringify(current_lineage);
-    // postLineage(lineage_json);
-    // window.location.href = "/exit";
-    // window.removeEventListener("beforeunload",(e) => {
-    //     console.log('pls');
-    // }, false);
-    // return chains;
-
-    // if(finished){
-    //     return finished;
-    // }
 }
 
-// start_chain(chains);
 

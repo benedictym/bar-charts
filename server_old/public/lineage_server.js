@@ -1,7 +1,7 @@
 class Lineages {
     constructor(lineage_id) {
         this.lineage_id = lineage_id;
-        this.occupied = false;
+        this.occupied = "false";
         this.chains = [];
     }
 
@@ -12,6 +12,6 @@ class Lineages {
     lineageState(){
     }
 }
-// const lineages = [new Lineages(1), new Lineages(2), new Lineages(3), new Lineages(4), new Lineages(5), new Lineages(6)]
+// const lineages = [new LineagesJSON(1), new LineagesJSON(2), new LineagesJSON(3), new LineagesJSON(4), new LineagesJSON(5), new LineagesJSON(6)]
 
 module.exports = Lineages;

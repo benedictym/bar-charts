@@ -33,8 +33,12 @@ async function generateCode() {
     }
     const codeRandomString = codeRandom.toString();
     let codeRandomJson = `{"code": ${codeRandom}, "cookie": "${cookie}"}`;
-    postCode(codeRandomJson);
+    await postCode(codeRandomJson);
     document.getElementById('surveyCode').innerHTML = "<b>" +codeStart+codeRandomString + "</b>";
 }
 
-generateCode();
+generateCode().then(
+    () =>{
+        console.log("code generated");
+    }
+);

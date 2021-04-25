@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+
 }
 
 body {
@@ -7,6 +8,8 @@ body {
     background-color: #FFFBF6;
     font-family: 'Chivo', sans-serif ;
     color: #686666;
+    /*padding-right: 5px;*/
+    /*padding-left: 5px;*/
 }
 
 header {
@@ -134,4 +137,9 @@ a:link{
 
 a:hover{
     color: #686666;
+}
+
+textarea{
+    width: 500px;
+    height: 150px;
 }

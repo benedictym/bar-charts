@@ -38,8 +38,10 @@ const postLineage = (lineage_json) => {
 
 async function initiateLineage() {
 
-    const current_lineage = await loadLineage();
-    if(isEmpty(current_lineage)){
+    const lineageJson = await loadLineage();
+    const current_lineage = lineageJson.lineageJson;
+    const cookie = lineageJson.cookie;
+    if(isEmpty(lineageJson)){
         window.location.href = "/unavailable";
     }
     let lineage_no = current_lineage.lineage_id;
@@ -54,21 +56,29 @@ async function initiateLineage() {
         chain_list = [];
         for (let i = 0; i < chains.length; i++){
             let new_chain = new Chain(i);
-            for(let j = 0; j < chains[i]['selected_colours'].length; j++){
-                let bar_chart = chains[i]['selected_colours'][j];
+            new_chain.selected_colours = chains[i]['selected_colours'];
+            if(chains[i]['selected_colours'].length > 0){
+                new_chain.selected_colours.pop();
+                let bar_chart = chains[i]['selected_colours'][chains[i]['selected_colours'].length - 1];
                 let new_chart = new BarChart(bar_chart.lightness, bar_chart.chromatic_a, bar_chart.chromatic_b);
                 new_chain.add_results(new_chart);
             }
+
+            // for(let j = 0; j < chains[i]['selected_colours'].length; j++){
+            //     let bar_chart = chains[i]['selected_colours'][j];
+            //     let new_chart = new BarChart(bar_chart.lightness, bar_chart.chromatic_a, bar_chart.chromatic_b);
+            //     new_chain.add_results(new_chart);
+            // }
             chain_list.push(new_chain);
         }
     }
 
     // current_lineage.chains = await start_chain(chain_list, current_lineage);
-    await start_chain(chain_list, current_lineage);
+    await start_chain(chain_list, current_lineage, cookie);
     // console.log(current_lineage.chains);
     // const lineage_json = JSON.stringify(current_lineage);
     // // quickSave(lineage_json);
     // postLineage(lineage_json);
 }
 
-initiateLineage();
+await initiateLineage();
