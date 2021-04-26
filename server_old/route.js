@@ -20,14 +20,30 @@ async function uploadFile(filePath, fileName){
     });
     console.log(`${filePath} uploaded to ${bucketName}`);
 }
-async function write2cloud(fileName, fileWrite) {
+async function write2cloud(fileName, fileWrite, fileType) {
     // fileWrite is what to write to the file
+    // let path;
+
+
     let path = "/tmp/" + fileName + ".txt";
     let stream = fs.createWriteStream(path);
     stream.on("open", () => {
         stream.write(fileWrite);
     });
-    await uploadFile(path, fileName);
+    let fileDest;
+    switch(fileType["file_type"]) {
+        case "lineage":
+            let lineage_no = fileType.no;
+            fileDest = "lineage" + lineage_no + "/" + fileName + ".txt";
+            break;
+        case "cookie_codes":
+            fileDest = "cookieCodes/" + fileName + ".txt";
+            break;
+        case "comment":
+            fileDest = "comments/" + fileName + ".txt";
+            break;
+    }
+    await uploadFile(path, fileDest);
     fs.unlink(path, function (err) {
         if (err) {
             throw err;
@@ -162,7 +178,11 @@ router.post("/task/json", jsonParser, function (req, res){
 
     const lineageJson = JSON.stringify(lineageObj);
     const fileName = lin_id + ":" + cookie + "_" + getFormattedTime();
-    write2cloud(fileName, lineageJson).then(r => console.log("lineage written"));
+    const fileType = {
+        file_type: "lineage",
+        no: lin_id
+    }
+    write2cloud(fileName, lineageJson, fileType).then(r => console.log("lineage written"));
 
 });
 
@@ -184,6 +204,7 @@ router.get("/exit/codes", function (req, res) {
     res.send(exitCode);
 })
 
+let no_users = 0;
 router.post("/exit/codes", jsonParser, function (req, res){
     let currentCode = req.body;
     console.log(currentCode.code);
@@ -195,8 +216,14 @@ router.post("/exit/codes", jsonParser, function (req, res){
     cookieCode[cookie] = currentCode.code;
     console.log(cookieCode);
     const cookieJson = JSON.stringify(cookieCode);
+    const fileName = no_users + ":" + "cookie_codes";
+    const fileType = {
+        file_type: "cookie_codes",
+        no: no_users
+    };
 
-    write2cloud("cookie_codes", cookieJson).then(r => console.log("cookie exit codes updated"));
+    write2cloud(fileName, cookieJson, fileType).then(r => console.log("cookie exit codes updated"));
+    no_users ++;
 });
 
 router.get("/exit", function (req, res) {
@@ -204,12 +231,22 @@ router.get("/exit", function (req, res) {
 });
 
 router.post("/exit/form", function (req, res) {
+    // let form = req.body
+    // // const cookie = form['cookie'];
     let form = JSON.parse(JSON.stringify(req.body));
     let form_text = [];
     Object.keys(form).forEach(function (key) {
-        form_text.push(form[key]);
+        // form_text.push(key);
+        form_text.push(key);
     })
-    console.log(form_text);
+    const fileName = no_users + "_message";
+    const fileType = {
+        file_type: "comment"
+    };
+    form_text = form_text[0]
+    write2cloud(fileName, form_text, fileType).then(r => console.log("comment sent"));
+
+    // console.log(form_text);
     res.end();
 
 })

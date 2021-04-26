@@ -23,21 +23,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56e09eb9-fd9c-478c-9f92-23463dfc2c74" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server_old/buckets.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server_old/public/jsonCSV.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_old/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/app.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_old/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_old/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_old/public/bar-charts-stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/public/bar-charts-stylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server_old/public/bar-charts.js" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/public/bar-charts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server_old/public/exit.js" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/public/exit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_old/public/lineage_server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/public/lineage_server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_old/public/lineages.js" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/public/lineages.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server_old/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server_old/views/exit.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/views/exit.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_old/views/task.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/views/task.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +49,12 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/server_old/public/bar-charts.js" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="786" />
+    <option name="y" value="23" />
+    <option name="width" value="654" />
+    <option name="height" value="804" />
   </component>
   <component name="ProjectId" id="1jsVnkjk051g325JGcUMT0eADJe" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -216,12 +212,14 @@
       <workItem from="1619121217366" duration="6898000" />
       <workItem from="1619138472786" duration="57000" />
       <workItem from="1619187747741" duration="6111000" />
-      <workItem from="1619318448593" duration="1663000" />
+      <workItem from="1619318448593" duration="2720000" />
+      <workItem from="1619371340230" duration="11245000" />
+      <workItem from="1619398563033" duration="28000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -367,22 +365,22 @@
       <screen x="0" y="23" width="1440" height="804" />
     </state>
     <state x="0" y="0" width="1440" height="900" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.804@0.23.1440.804" timestamp="1618076070126" />
-    <state x="352" y="117" width="1088" height="685" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1618349481563">
+    <state x="352" y="117" width="1088" height="685" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog" timestamp="1619397409920">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
-    <state x="352" y="117" width="1088" height="685" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/0.23.1440.804@0.23.1440.804" timestamp="1618349481563" />
-    <state x="0" y="23" width="720" height="803" key="dock-window-1" timestamp="1619319518774">
+    <state x="352" y="117" width="1088" height="685" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/0.23.1440.804@0.23.1440.804" timestamp="1619397409920" />
+    <state x="0" y="23" width="1013" height="755" key="dock-window-1" timestamp="1619371997515">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
-    <state x="0" y="23" width="720" height="803" key="dock-window-1/0.23.1440.804@0.23.1440.804" timestamp="1619319518774" />
-    <state x="62" y="124" width="646" height="702" key="dock-window-2" timestamp="1618160471934">
+    <state x="0" y="23" width="1013" height="755" key="dock-window-1/0.23.1440.804@0.23.1440.804" timestamp="1619371997515" />
+    <state x="120" y="143" width="700" height="676" key="dock-window-2" timestamp="1619379437716">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
-    <state x="62" y="124" width="646" height="702" key="dock-window-2/0.23.1440.804@0.23.1440.804" timestamp="1618160471934" />
-    <state x="54" y="72" width="609" height="739" key="dock-window-3" timestamp="1618080327938">
+    <state x="120" y="143" width="700" height="676" key="dock-window-2/0.23.1440.804@0.23.1440.804" timestamp="1619379437716" />
+    <state x="0" y="75" width="894" height="350" key="dock-window-3" timestamp="1619395900043">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
-    <state x="54" y="72" width="609" height="739" key="dock-window-3/0.23.1440.804@0.23.1440.804" timestamp="1618080327938" />
+    <state x="0" y="75" width="894" height="350" key="dock-window-3/0.23.1440.804@0.23.1440.804" timestamp="1619395900043" />
     <state x="0" y="23" width="720" height="803" key="dock-window-4" timestamp="1618081500765">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
@@ -416,6 +414,12 @@
           <url>file://$PROJECT_DIR$/Circle Test/circle-test.js</url>
           <line>156</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server_old/public/bar-charts.js</url>
+          <line>600</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

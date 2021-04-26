@@ -16,6 +16,26 @@ const postCode = (code) => {
 
 }
 
+// const postMsg = (msg_txt) => {
+//     fetch("https://bar-colour.nw.r.appspot.com/exit/form", {
+//         headers: {'Content-Type': "application/json"},
+//         method: 'post',
+//         body: msg_txt
+//     })
+//         .then(function (res){console.log(res)})
+//         .catch(function (res) {console.log(res)});
+// }
+
+// async function reloadPage(cookie){
+//     const msg = document.getElementById("msg").value;
+//     const msg_text = {
+//         cookie: cookie,
+//         msg: msg
+//     };
+//     await postMsg(msg_text);
+//     window.location.href = "/exit";
+// }
+
 async function generateCode() {
     let codeRandom;
     const codes = await loadCodes();
@@ -35,10 +55,26 @@ async function generateCode() {
     let codeRandomJson = `{"code": ${codeRandom}, "cookie": "${cookie}"}`;
     await postCode(codeRandomJson);
     document.getElementById('surveyCode').innerHTML = "<b>" +codeStart+codeRandomString + "</b>";
+    // const submit_button = document.getElementById('submit_button');
+    // submit_button.addEventListener('click', reloadPage(cookie).then(
+    //     () => {
+    //         console.log("comment sent");
+    //     }
+    //     )
+    // )
+    // await reloadPage(cookie);
 }
+
+
 
 generateCode().then(
     () =>{
         console.log("code generated");
     }
 );
+
+// reloadPage().then(
+//     () => {
+//         console.log("comment sent");
+//     }
+// )

@@ -560,6 +560,7 @@ export async function start_chain(chains, current_lineage, cookie) {
         } else{
             current_lineage["valid"] = false;
         }
+
         current_lineage.chains = chains;
         current_lineage["cookie"] = cookie;
         current_lineage["sides"] = sides;
@@ -591,9 +592,9 @@ export async function start_chain(chains, current_lineage, cookie) {
             session_chains[chain_no] = chain_len + 1;
         }
 
-        let all_left = /(0){22}/.test(sides);
-        let all_right = /(1){22}/.test(sides);
-        let alternate = /(01){11}/.test(sides);
+        let all_left = /(0){14}/.test(sides);
+        let all_right = /(1){14}/.test(sides);
+        let alternate = /(01){8}/.test(sides);
         if(all_left || all_right || alternate){
             valid = false;
             console.log("not completed correctly");
