@@ -6,9 +6,17 @@ const bcrypt = require('bcrypt');
 // const {uploadFile} = require('buckets');
 const Lineages = require('./public/lineage_server');
 const fs = require('fs');
-const jsonParser = bodyParser.json();
+const jsonParser = bodyParser.json({limit: '500mb'});
+// const urlParser = bodyParser.urlencoded({limit: '500mb', extended: true});
 const {Storage} = require('@google-cloud/storage');
 const directory = "/tmp";
+router.use(jsonParser);
+router.use(bodyParser.urlencoded({ limit: "500mb", extended: true, parameterLimit: 50000 }));
+// router.use(express.urlencoded({
+//     limit: '500mb',
+//     extended:true,
+//     parameterLimit: 50000
+// }));
 
 const bucketName = "bar-colour.appspot.com";
 
@@ -68,10 +76,9 @@ function getFormattedTime() {
 const salt1 = bcrypt.genSaltSync();
 const salt2 = bcrypt.genSaltSync();
 const secret = bcrypt.hashSync(salt1 + salt2, 8);
-
-router.use(express.urlencoded({
-    extended: true
-}));
+// router.use(jsonParser);
+// router.use(express.urlencoded({
+//     limit: '500mb'}));
 
 router.use(session({
     secret: secret,
@@ -98,6 +105,18 @@ const lineages = [new Lineages(0), new Lineages(1), new Lineages(2), new Lineage
 router.get("/task/json", function (req,res,next) {
     let lineageJson;
     let cookie = req.sessionID;
+    console.log(lineages[0].lineage_id);
+    console.log(lineages[0].occupied);
+    console.log(lineages[1].lineage_id);
+    console.log(lineages[1].occupied);
+    console.log(lineages[2].lineage_id);
+    console.log(lineages[2].occupied);
+    console.log(lineages[3].lineage_id);
+    console.log(lineages[3].occupied);
+    console.log(lineages[4].lineage_id);
+    console.log(lineages[4].occupied);
+    console.log(lineages[5].lineage_id);
+    console.log(lineages[5].occupied);
 
     if(lineages[0].occupied === "false"){
         lineages[0].occupied = "true";
@@ -146,12 +165,12 @@ router.get("/task/json", function (req,res,next) {
     }
 });
 
-router.post("/task/json", jsonParser, function (req, res){
+router.post("/task/json", function (req, res){
     let curr_lineage = req.body;
     let cookie = curr_lineage.cookie;
     let lin_id = curr_lineage.lineage_id;
     let lin = lineages[lin_id];
-    lin.occupied = "false";
+    // lin.occupied = "false";
     const lineageObj = {
         lineage_id: lin_id,
         cookie: cookie,
@@ -161,6 +180,14 @@ router.post("/task/json", jsonParser, function (req, res){
         sides: curr_lineage.sides,
         no_choices: curr_lineage.no_choices
     };
+
+    const lineageJson = JSON.stringify(lineageObj);
+    const fileName = lin_id + ":" + cookie + "_" + getFormattedTime();
+    const fileType = {
+        file_type: "lineage",
+        no: lin_id
+    }
+    write2cloud(fileName, lineageJson, fileType).then(r => console.log("lineage written"));
 
     if(!curr_lineage.valid){
         let session_chains = curr_lineage.session_len;
@@ -176,19 +203,20 @@ router.post("/task/json", jsonParser, function (req, res){
     lineages[lin_id] = lin;
     console.log(lineages[lin_id]);
 
-    const lineageJson = JSON.stringify(lineageObj);
-    const fileName = lin_id + ":" + cookie + "_" + getFormattedTime();
-    const fileType = {
-        file_type: "lineage",
-        no: lin_id
-    }
-    write2cloud(fileName, lineageJson, fileType).then(r => console.log("lineage written"));
-
 });
 
 router.get("/task", function (req, res) {
     res.render("task");
 });
+
+router.post("/task/occupied", function (req, res) {
+    let curr_lineage = req.body;
+    // console.log(curr_lineage);
+    let lin_id = curr_lineage.lineage_id;
+    let lin = lineages[lin_id];
+    lin.occupied = "false";
+    lineages[lin_id] = lin;
+})
 
 let surveyCodes = [];
 let cookieCode = {};
@@ -205,7 +233,7 @@ router.get("/exit/codes", function (req, res) {
 })
 
 let no_users = 0;
-router.post("/exit/codes", jsonParser, function (req, res){
+router.post("/exit/codes", function (req, res){
     let currentCode = req.body;
     console.log(currentCode.code);
     if(!surveyCodes.includes(currentCode.code)){

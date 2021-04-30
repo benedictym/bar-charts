@@ -295,16 +295,16 @@ function change(chain) {
             new_chart = new BarChart(generate_RandArray(90, 15), generate_RandArray(96.254, -86.185), generate_RandArray(84.482, -107.863));
         } else{
             let sd_lightness = current_chart.lightness.map(function (element){
-                // return element * 1;
-                return 10;
+                // return element * 2;
+                return 18.75;
             });
             let sd_chromaticA = current_chart.chromatic_a.map(function (element) {
-                // return element * 1;
-                return 30;
+                // return element * 2;
+                return 45.61;
             });
             let sd_chromaticB = current_chart.chromatic_b.map(function (element){
-                // return element * 1;
-                return 30;
+                // return element * 2;
+                return 48.09;
             });
             let mean_lightness = current_chart.lightness
             let mean_chromaticA = current_chart.chromatic_a;
@@ -314,10 +314,9 @@ function change(chain) {
                 let new_chart;
                 let a = () => {
                     let proposal = Math.round(Math.random())
-                    return (proposal === 0) ? -3 : 3;
+                    return (proposal === 0) ? -4 : 4;
                     // return (proposal === 0) ? -5 : 5;
                     // return 0;
-
 
                 }
                 let new_lightness = [];
@@ -390,13 +389,15 @@ function change(chain) {
         function keep_current(){
             console.log(current_chart.toString());
             current_chart.rechosen = true;
-            chain.add_results(current_chart);
+            let current_chart_added = new BarChart(current_chart.lightness, current_chart.chromatic_a, current_chart.chromatic_b);
+            chain.add_results(current_chart_added);
             [current_chart, new_chart, side] = redraw(chain);
         }
         function change_current(){
             console.log(new_chart.toString());
-            current_chart = false;
-            chain.add_results(new_chart);
+            current_chart.rechosen = false;
+            let new_chart_added = new BarChart(new_chart.lightness, new_chart.chromatic_a, new_chart.chromatic_b);
+            chain.add_results(new_chart_added);
             [current_chart, new_chart, side] = redraw(chain);
         }
         document.body.onkeydown = function (e) {
@@ -504,31 +505,26 @@ function gelman_rubin (chains, bar_parameter){
 }
 
 export async function start_chain(chains, current_lineage, cookie) {
-    // let finished = false
-    // function unload_it (e) {
-    //     current_lineage.chains = chains;
-    //     const lineage_json = JSON.stringify(current_lineage);
-    //     fetch("http://localhost:8080/task/json", {
-    //         headers: {'Content-Type': "application/json"},
-    //         method: 'post',
-    //         body: lineage_json
-    //     })
-    //         .then(function (res){console.log(res)})
-    //         .catch(function (res) {console.log(res)});
-    // }
-    // window.removeEventListener("beforeunload", unload_it(), false);
 
-    let valid = true;
-    const total = 20;
-    window.addEventListener("beforeunload", (e) => {
+    const postLineage = async (lineage_json, server_url) => {
+        const settings = {
+            headers: {'Content-Type': "application/json"},
+            method: 'POST',
+            body: lineage_json
+        }
 
-        if(chains[0].selected_colours.length > 5) {
+        await fetch("https://bar-colour.nw.r.appspot.com/" + server_url, settings);
+
+    }
+
+    let lineage_json = ()=> {
+        if(chains[0].selected_colours.length >= 100) {
             const lightness = gelman_rubin(chains, 'lightness');
             const chromatic_a = gelman_rubin(chains, 'chromatic_a');
             const chromatic_b = gelman_rubin(chains, 'chromatic_b');
 
             // checks if lineage has converged
-            if ((lightness < 1.2) && (chromatic_a < 1.2) && (chromatic_b < 1.2)) {
+            if(((lightness < 1.2) && (chromatic_a < 1.2) && (chromatic_b < 1.2)) || chains[0].selected_colours.length >= 6000) {
                 current_lineage.occupied = "converged";
             } else {
                 current_lineage.occupied = "false";
@@ -545,38 +541,35 @@ export async function start_chain(chains, current_lineage, cookie) {
         // checks at least 10 charts chosen
         if(i < 10) {valid = false;}
 
-        // if(valid){
-        //     current_lineage["valid"] = true;
-        // } else{
-        //     for(let i = 0; i < chains.length; i++){
-        //         let session_length = session_chains[i];
-        //         (chains[i].selected_colours).splice(-session_length);
-        //     }
-        //     current_lineage["valid"] = false;
-        // }
-
-        if(valid){
-            current_lineage["valid"] = true;
-        } else{
-            current_lineage["valid"] = false;
-        }
-
+        current_lineage["valid"] = valid;
         current_lineage.chains = chains;
+        // current_lineage["occupied"] = current_lineage.occupied;
         current_lineage["cookie"] = cookie;
         current_lineage["sides"] = sides;
         current_lineage["no_choices"] = sides.length;
         current_lineage["session_len"] = session_chains;
-        // current_lineage["autoRejections"] = autoRejections;
-        const lineage_json = JSON.stringify(current_lineage);
+        return JSON.stringify(current_lineage);
+    }
 
-        fetch("https://bar-colour.nw.r.appspot.com/task/json", {
-            headers: {'Content-Type': "application/json"},
-            method: 'post',
-            body: lineage_json
-        })
-            .then(function (res){console.log(res)})
-            .catch(function (res) {console.log(res)});
-    });
+    //     fetch("https://bar-colour.nw.r.appspot.com/task/json", {
+    //         headers: {'Content-Type': "application/json"},
+    //         method: 'post',
+    //         body: lineage_json
+    //     })
+    //         .then(function (res){console.log(res)})
+    //         .catch(function (res) {console.log(res)});
+    // }
+
+    let valid = true;
+    const total = 1500;
+
+    window.addEventListener("beforeunload", async (e) => {
+        const lineageJson = {
+            lineage_id: current_lineage.lineage_id
+        }
+
+        await postLineage(JSON.stringify(lineageJson), "/task/occupied");
+     });
 
     let i = 0;
     while (i < total){
@@ -584,7 +577,15 @@ export async function start_chain(chains, current_lineage, cookie) {
         let amount_left = total - i;
         document.getElementById('amount_left').innerHTML = "Choices left: " + "<b>" + amount_left.toString() + "</b>";
         await change(chains[chain_no]);
-        // checks length of chain
+        if(((i+1) % 100) === 0){
+            let lineageJson = lineage_json();
+            postLineage(lineageJson,  "task/json");
+        }
+
+        if(chains[chain_no].selected_colours.length >= 6000){
+            valid = true;
+            break;
+        }
         if(!session_chains.hasOwnProperty(chain_no)){
             session_chains[chain_no] = 1;
         } else {
@@ -592,12 +593,12 @@ export async function start_chain(chains, current_lineage, cookie) {
             session_chains[chain_no] = chain_len + 1;
         }
 
-        let all_left = /(0){14}/.test(sides);
-        let all_right = /(1){14}/.test(sides);
-        let alternate = /(01){8}/.test(sides);
+        let all_left = /(0){13}/.test(sides);
+        let all_right = /(1){13}/.test(sides);
+        let alternate = /(01){7}/.test(sides);
         if(all_left || all_right || alternate){
             valid = false;
-            console.log("not completed correctly");
+            // console.log("not completed correctly");
             break;
         }
 
@@ -605,6 +606,7 @@ export async function start_chain(chains, current_lineage, cookie) {
         // console.log(session_chains);
         i++;
     }
+
     window.location.href = "/exit";
 
 }

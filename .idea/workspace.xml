@@ -24,10 +24,16 @@
   <component name="ChangeListManager">
     <list default="true" id="56e09eb9-fd9c-478c-9f92-23463dfc2c74" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_old/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/app.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_old/bar_chart_server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/bar_chart_server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_old/public/ONLINE_PIS.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/public/ONLINE_PIS.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_old/public/bar-charts-stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/public/bar-charts-stylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server_old/public/bar-charts.js" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/public/bar-charts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_old/public/exit.js" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/public/exit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_old/public/lineages.js" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/public/lineages.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server_old/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_old/views/consent-form.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/views/consent-form.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server_old/views/exit.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/views/exit.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_old/views/intro.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/views/intro.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,12 +55,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/server_old/public/bar-charts.js" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="786" />
-    <option name="y" value="23" />
-    <option name="width" value="654" />
-    <option name="height" value="804" />
   </component>
   <component name="ProjectId" id="1jsVnkjk051g325JGcUMT0eADJe" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -215,11 +215,14 @@
       <workItem from="1619318448593" duration="2720000" />
       <workItem from="1619371340230" duration="11245000" />
       <workItem from="1619398563033" duration="28000" />
+      <workItem from="1619451236741" duration="162000" />
+      <workItem from="1619656203407" duration="12685000" />
+      <workItem from="1619742720334" duration="14928000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -369,10 +372,10 @@
       <screen x="0" y="23" width="1440" height="804" />
     </state>
     <state x="352" y="117" width="1088" height="685" key="com.intellij.history.integration.ui.views.SelectionHistoryDialog/0.23.1440.804@0.23.1440.804" timestamp="1619397409920" />
-    <state x="0" y="23" width="1013" height="755" key="dock-window-1" timestamp="1619371997515">
+    <state x="0" y="23" width="733" height="667" key="dock-window-1" timestamp="1619801188322">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
-    <state x="0" y="23" width="1013" height="755" key="dock-window-1/0.23.1440.804@0.23.1440.804" timestamp="1619371997515" />
+    <state x="0" y="23" width="733" height="667" key="dock-window-1/0.23.1440.804@0.23.1440.804" timestamp="1619801188322" />
     <state x="120" y="143" width="700" height="676" key="dock-window-2" timestamp="1619379437716">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
@@ -381,10 +384,10 @@
       <screen x="0" y="23" width="1440" height="804" />
     </state>
     <state x="0" y="75" width="894" height="350" key="dock-window-3/0.23.1440.804@0.23.1440.804" timestamp="1619395900043" />
-    <state x="0" y="23" width="720" height="803" key="dock-window-4" timestamp="1618081500765">
+    <state x="0" y="23" width="700" height="651" key="dock-window-4" timestamp="1619403078399">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
-    <state x="0" y="23" width="720" height="803" key="dock-window-4/0.23.1440.804@0.23.1440.804" timestamp="1618081500765" />
+    <state x="0" y="23" width="700" height="651" key="dock-window-4/0.23.1440.804@0.23.1440.804" timestamp="1619403078399" />
     <state x="242" y="23" width="724" height="655" key="dock-window-5" timestamp="1618091324764">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
@@ -397,10 +400,10 @@
       <screen x="0" y="23" width="1440" height="804" />
     </state>
     <state x="0" y="23" width="787" height="785" key="dock-window-7/0.23.1440.804@0.23.1440.804" timestamp="1617651093715" />
-    <state x="660" y="151" width="670" height="676" key="search.everywhere.popup" timestamp="1614989551324">
+    <state x="660" y="151" width="670" height="676" key="search.everywhere.popup" timestamp="1619657306823">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
-    <state x="660" y="151" width="670" height="676" key="search.everywhere.popup/0.23.1440.804@0.23.1440.804" timestamp="1614989551324" />
+    <state x="660" y="151" width="670" height="676" key="search.everywhere.popup/0.23.1440.804@0.23.1440.804" timestamp="1619657306823" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -414,12 +417,6 @@
           <url>file://$PROJECT_DIR$/Circle Test/circle-test.js</url>
           <line>156</line>
           <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/server_old/public/bar-charts.js</url>
-          <line>600</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

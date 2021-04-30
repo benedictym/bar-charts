@@ -8,8 +8,7 @@ function isEmpty(obj){
 
 const loadLineage = async () => {
     const response = await fetch("https://bar-colour.nw.r.appspot.com/task/json");
-    const res = await response.json();
-    return res;
+    return await response.json();
 }
 
 const postLineage = (lineage_json) => {
