@@ -45,7 +45,7 @@
                     console.log(msg_text);
                     fetch("https://bar-colour.nw.r.appspot.com/exit/form", {
                         headers: {'Content-Type': "application/x-www-form-urlencoded"},
-                        method: 'post',
+                        method: 'POST',
                         body: msg_text
                     })
                         .then(function (res){console.log(res)})

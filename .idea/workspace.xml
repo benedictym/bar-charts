@@ -26,14 +26,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server_old/app.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/app.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server_old/bar_chart_server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/bar_chart_server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_old/public/ONLINE_PIS.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/public/ONLINE_PIS.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_old/public/bar-charts-stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/public/bar-charts-stylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server_old/public/bar-charts.js" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/public/bar-charts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_old/public/lineages.js" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/public/lineages.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_old/public/exit.js" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/public/exit.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server_old/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_old/views/consent-form.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/views/consent-form.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server_old/views/exit.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/views/exit.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_old/views/intro.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/views/intro.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,7 +213,10 @@
       <workItem from="1619398563033" duration="28000" />
       <workItem from="1619451236741" duration="162000" />
       <workItem from="1619656203407" duration="12685000" />
-      <workItem from="1619742720334" duration="14928000" />
+      <workItem from="1619742720334" duration="15134000" />
+      <workItem from="1619889063350" duration="3226000" />
+      <workItem from="1619901989336" duration="2790000" />
+      <workItem from="1619985113763" duration="6495000" />
     </task>
     <servers />
   </component>

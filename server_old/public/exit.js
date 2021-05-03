@@ -53,7 +53,7 @@ async function generateCode() {
     }
     const codeRandomString = codeRandom.toString();
     let codeRandomJson = `{"code": ${codeRandom}, "cookie": "${cookie}"}`;
-    await postCode(codeRandomJson);
+    postCode(codeRandomJson);
     document.getElementById('surveyCode').innerHTML = "<b>" +codeStart+codeRandomString + "</b>";
     // const submit_button = document.getElementById('submit_button');
     // submit_button.addEventListener('click', reloadPage(cookie).then(

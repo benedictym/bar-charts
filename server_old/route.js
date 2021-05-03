@@ -90,17 +90,26 @@ router.use(session({
 
 }));
 
-router.get("/", function (req, res){
-    console.log('the web page has opened ...');
-    console.log(req.sessionID);
-    res.render("intro");
-});
+// router.get("/", function (req, res){
+//     console.log('the web page has opened ...');
+//     console.log(req.sessionID);
+//     res.render("intro");
+// });
 
 router.get("/consent-form", function (req, res){
     res.render("consent-form");
 });
 
 const lineages = [new Lineages(0), new Lineages(1), new Lineages(2), new Lineages(3), new Lineages(4), new Lineages(5)];
+
+router.post("/task/occupied", function (req, res) {
+    let curr_lineage = req.body;
+    // console.log(curr_lineage);
+    let lin_id = curr_lineage.lineage_id;
+    let lin = lineages[lin_id];
+    lin.occupied = "false";
+    lineages[lin_id] = lin;
+});
 
 router.get("/task/json", function (req,res,next) {
     let lineageJson;
@@ -205,18 +214,10 @@ router.post("/task/json", function (req, res){
 
 });
 
+
 router.get("/task", function (req, res) {
     res.render("task");
 });
-
-router.post("/task/occupied", function (req, res) {
-    let curr_lineage = req.body;
-    // console.log(curr_lineage);
-    let lin_id = curr_lineage.lineage_id;
-    let lin = lineages[lin_id];
-    lin.occupied = "false";
-    lineages[lin_id] = lin;
-})
 
 let surveyCodes = [];
 let cookieCode = {};
@@ -283,6 +284,14 @@ router.get("/unavailable", function (req,res) {
     res.render("unavailable");
 })
 
+router.get("/", function (req, res){
+    console.log('the web page has opened ...');
+    console.log(req.sessionID);
+    res.render("intro");
+});
 
+
+// router.get(/^(?!.*_ah).*$/,(req,res,next)=>{
+// })
 
 module.exports = router;

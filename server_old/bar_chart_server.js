@@ -14,7 +14,7 @@ const path_views = path.join(__dirname, "views")
 app.set("views", path_views );
 app.set("view engine", "ejs");
 
-app.use(cors());
+// app.use(cors());
 // configure body parsing middleware
 // app.use(bodyParser.urlencoded({extended: false}));
 // app.use(bodyParser.json());

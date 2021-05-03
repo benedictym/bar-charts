@@ -567,9 +567,18 @@ export async function start_chain(chains, current_lineage, cookie) {
         const lineageJson = {
             lineage_id: current_lineage.lineage_id
         }
+            fetch("https://bar-colour.nw.r.appspot.com/task/occupied", {
+                headers: {'Content-Type': "application/json"},
+                method: 'post',
+                body: lineageJson
+            })
+                .then(function (res){console.log(res)})
+                .catch(function (res) {console.log(res)});
 
-        await postLineage(JSON.stringify(lineageJson), "/task/occupied");
-     });
+// ``        postLineage(JSON.stringify(lineageJson), "/task/occupied");
+        // let lineageson = lineage_json();
+
+    });
 
     let i = 0;
     while (i < total){
@@ -579,7 +588,7 @@ export async function start_chain(chains, current_lineage, cookie) {
         await change(chains[chain_no]);
         if(((i+1) % 100) === 0){
             let lineageJson = lineage_json();
-            postLineage(lineageJson,  "task/json");
+            // postLineage(lineageJson,  "task/json");
         }
 
         if(chains[chain_no].selected_colours.length >= 6000){
