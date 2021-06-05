@@ -513,7 +513,7 @@ export async function start_chain(chains, current_lineage, cookie) {
             body: lineage_json
         }
 
-        await fetch("https://bar-colour.nw.r.appspot.com/" + server_url, settings);
+        await fetch("https://localhost:8080" + server_url, settings);
 
     }
 
@@ -567,7 +567,7 @@ export async function start_chain(chains, current_lineage, cookie) {
         const lineageJson = {
             lineage_id: current_lineage.lineage_id
         }
-            fetch("https://bar-colour.nw.r.appspot.com/task/occupied", {
+            fetch("https://localhost:8080/task/occupied", {
                 headers: {'Content-Type': "application/json"},
                 method: 'post',
                 body: lineageJson

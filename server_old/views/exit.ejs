@@ -43,7 +43,7 @@
                 function reloadPage() {
                     let msg_text = document.getElementById("msg").value;
                     console.log(msg_text);
-                    fetch("https://bar-colour.nw.r.appspot.com/exit/form", {
+                    fetch("https://localhost:8080", {
                         headers: {'Content-Type': "application/x-www-form-urlencoded"},
                         method: 'POST',
                         body: msg_text

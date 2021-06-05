@@ -1,6 +1,6 @@
 const {Storage} = require('@google-cloud/storage');
 
-const bucketName = "bar-colour.appspot.com";
+const bucketName = "web-colour-bucket";
 
 const storage = new Storage();
 

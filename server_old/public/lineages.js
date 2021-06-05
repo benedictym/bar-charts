@@ -7,12 +7,12 @@ function isEmpty(obj){
 }
 
 const loadLineage = async () => {
-    const response = await fetch("https://bar-colour.nw.r.appspot.com/task/json");
+    const response = await fetch("https://localhost:8080/task/json");
     return await response.json();
 }
 
 const postLineage = (lineage_json) => {
-    fetch("https://bar-colour.nw.r.appspot.com/task/json", {
+    fetch("https://localhost:8080/task/json", {
         headers: {'Content-Type': "application/json"},
         method: 'post',
         body: lineage_json
@@ -62,12 +62,6 @@ async function initiateLineage() {
                 let new_chart = new BarChart(bar_chart.lightness, bar_chart.chromatic_a, bar_chart.chromatic_b);
                 new_chain.add_results(new_chart);
             }
-
-            // for(let j = 0; j < chains[i]['selected_colours'].length; j++){
-            //     let bar_chart = chains[i]['selected_colours'][j];
-            //     let new_chart = new BarChart(bar_chart.lightness, bar_chart.chromatic_a, bar_chart.chromatic_b);
-            //     new_chain.add_results(new_chart);
-            // }
             chain_list.push(new_chain);
         }
     }

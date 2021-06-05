@@ -10,6 +10,8 @@ class Lineages {
     }
 
     lineageState(){
+        console.log(this.lineage_id);
+        console.log(this.occupied);
     }
 }
 // const lineages = [new LineagesJSON(1), new LineagesJSON(2), new LineagesJSON(3), new LineagesJSON(4), new LineagesJSON(5), new LineagesJSON(6)]

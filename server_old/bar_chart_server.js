@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
 
-app.set("port", process.env.PORT || 8081);
+app.set("port", process.env.PORT || 8080);
 const path_views = path.join(__dirname, "views")
 app.set("views", path_views );
 app.set("view engine", "ejs");

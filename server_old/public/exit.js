@@ -1,12 +1,12 @@
 const codeStart = "842";
 
 const loadCodes = async () => {
-    const response = await fetch("https://bar-colour.nw.r.appspot.com/exit/codes");
+    const response = await fetch("https://localhost:8080/exit/codes");
     return await response.json();
 }
 
 const postCode = (code) => {
-    fetch("https://bar-colour.nw.r.appspot.com/exit/codes", {
+    fetch("https://localhost:8080/exit/codes", {
         headers: {'Content-Type': "application/json"},
         method: 'post',
         body: code
