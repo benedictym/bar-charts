@@ -1,18 +1,19 @@
 // const Chain = require("server_old/public/bar-charts");
 // const start_chain = require("server_old/public/bar-charts");
 import {BarChart, Chain, start_chain} from "./bar-charts.js";
+const ip_address = "34.89.105.251:8080"
 
 function isEmpty(obj){
     return Object.keys(obj).length === 0;
 }
 
 const loadLineage = async () => {
-    const response = await fetch("https://localhost:8080/task/json");
+    const response = await fetch(`http://${ip_address}/task/json`);
     return await response.json();
 }
 
 const postLineage = (lineage_json) => {
-    fetch("https://localhost:8080/task/json", {
+    fetch(`http://${ip_address}/task/json`, {
         headers: {'Content-Type': "application/json"},
         method: 'post',
         body: lineage_json

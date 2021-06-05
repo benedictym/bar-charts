@@ -10,6 +10,7 @@ const session = require('express-session');
 const bcrypt = require('bcrypt');
 
 app.set("port", process.env.PORT || 8080);
+app.set("ipAddress", "34.89.105.251");
 const path_views = path.join(__dirname, "views")
 app.set("views", path_views );
 app.set("view engine", "ejs");
@@ -23,7 +24,7 @@ app.use(express.static(__dirname + '/public'));
 // app.use(express.static(__dirname + '/'));
 app.use(routes);
 app.listen(app.get("port"), () => {
-    console.log(`Server started on at http://localhost:${app.get('port')}`);
+    console.log(`Server started on at http://${app.get("ipAddress")}:${app.get('port')}`);
 });
 
 // let userCount = 0;

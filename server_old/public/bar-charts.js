@@ -506,6 +506,8 @@ function gelman_rubin (chains, bar_parameter){
 
 export async function start_chain(chains, current_lineage, cookie) {
 
+    const ip_address = "34.89.105.251"
+
     const postLineage = async (lineage_json, server_url) => {
         const settings = {
             headers: {'Content-Type': "application/json"},
@@ -513,7 +515,7 @@ export async function start_chain(chains, current_lineage, cookie) {
             body: lineage_json
         }
 
-        await fetch("https://localhost:8080" + server_url, settings);
+        await fetch("http://" + ip_address + ":8080" + server_url, settings);
 
     }
 
@@ -567,7 +569,7 @@ export async function start_chain(chains, current_lineage, cookie) {
         const lineageJson = {
             lineage_id: current_lineage.lineage_id
         }
-            fetch("https://localhost:8080/task/occupied", {
+            fetch("http://" + ip_address+ ":8080/task/occupied", {
                 headers: {'Content-Type': "application/json"},
                 method: 'post',
                 body: lineageJson

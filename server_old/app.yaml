@@ -1,8 +1,8 @@
-runtime: nodejs14
-
-instance_class: B8
-manual_scaling:
-  instances: 1
+#runtime: nodejs14
+#
+#instance_class: B8
+#manual_scaling:
+#  instances: 1
 
 #resources:
 #  cpu: 1
