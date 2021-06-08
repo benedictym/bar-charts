@@ -24,11 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="56e09eb9-fd9c-478c-9f92-23463dfc2c74" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_old/bar_chart_server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/bar_chart_server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_old/public/exit.js" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/public/exit.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server_old/public/lineages.js" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/public/lineages.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_old/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_old/views/exit.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/views/exit.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,6 +217,7 @@
       <workItem from="1622818661726" duration="3561000" />
       <workItem from="1623115023469" duration="1452000" />
       <workItem from="1623185990862" duration="312000" />
+      <workItem from="1623188007341" duration="692000" />
     </task>
     <servers />
   </component>
@@ -430,6 +427,12 @@
           <url>file://$PROJECT_DIR$/server_old/public/bar-charts.js</url>
           <line>119</line>
           <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/server_old/route.js</url>
+          <line>128</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
