@@ -1,7 +1,7 @@
 // const Chain = require("server_old/public/bar-charts");
 // const start_chain = require("server_old/public/bar-charts");
 import {BarChart, Chain, start_chain} from "./bar-charts.js";
-const ip_address = "34.89.105.251:8080"
+const ip_address = "localhost:8080"
 
 function isEmpty(obj){
     return Object.keys(obj).length === 0;

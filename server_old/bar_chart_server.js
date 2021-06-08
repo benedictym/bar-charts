@@ -10,7 +10,7 @@ const session = require('express-session');
 const bcrypt = require('bcrypt');
 
 app.set("port", process.env.PORT || 8080);
-app.set("ipAddress", "34.89.105.251");
+app.set("ipAddress", "localhost");
 const path_views = path.join(__dirname, "views")
 app.set("views", path_views );
 app.set("view engine", "ejs");

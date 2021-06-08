@@ -129,125 +129,125 @@ router.post("/task/occupied", function (req, res) {
 });
 
 //old task json
-
-router.get("/task/json", async function (req, res) {
-    let cookie = req.sessionID;
-    let lineage_choice = null;
-    for(let i = 0; i < lineages.length; i++){
-        lineages[i].lineageState();
-    }
-
-    for(let j = 0; j < lineages.length; j++){
-        if(lineages[j].occupied === "false"){
-            lineages[j].occupied = "true"
-            lineage_choice = lineages[j];
-            break;
-        }
-    }
-    if(lineage_choice !== null){
-        // get lineage from server
-        let lineage_no = lineage_choice.lineage_id;
-        let path = "lineages/lineage_" + lineage_no + ".txt"
-        let download_to = "/tmp/lineage_" + lineage_no + ".txt";
-        await downloadFile(path, download_to);
-        await fs.readFile(download_to,'utf-8',function (err, data) {
-            if(err) throw err;
-            console.log(data);
-            console.log(data.toString());
-            console.log("data printed");
-            let lineageJSON = {
-                lineageJson: JSON.parse(data.toString()),
-                cookie: cookie
-            }
-            console.log(lineageJSON.lineageJson);
-            res.send(lineageJSON);
-        });
-        //
-        // fs.unlink(download_to, function (err) {
-        //     if (err) {
-        //         throw err;
-        //     } else {
-        //         console.log(`successfully deleted: ${download_to}`);
-        //     }
-        // })
-
-        // fs.readFile(download_to, 'utf8', function(err,data){
-        //     if(err) throw err;
-        //     let obj = JSON.parse(data);
-        // });
-        // let lineageJSON = {
-        //     lineageJson: obj;
-        // }
-        // res.send(lineageJSON)
-    } else {
-        res.send({});
-    }
-})
-
-// router.get("/task/json", function (req,res,next) {
-//     let lineageJson;
+//
+// router.get("/task/json", async function (req, res) {
 //     let cookie = req.sessionID;
+//     let lineage_choice = null;
+//     for(let i = 0; i < lineages.length; i++){
+//         lineages[i].lineageState();
+//     }
 //
-//     console.log(lineages[0].lineage_id);
-//     console.log(lineages[0].occupied);
-//     console.log(lineages[1].lineage_id);
-//     console.log(lineages[1].occupied);
-//     console.log(lineages[2].lineage_id);
-//     console.log(lineages[2].occupied);
-//     console.log(lineages[3].lineage_id);
-//     console.log(lineages[3].occupied);
-//     console.log(lineages[4].lineage_id);
-//     console.log(lineages[4].occupied);
-//     console.log(lineages[5].lineage_id);
-//     console.log(lineages[5].occupied);
+//     for(let j = 0; j < lineages.length; j++){
+//         if(lineages[j].occupied === "false"){
+//             lineages[j].occupied = "true"
+//             lineage_choice = lineages[j];
+//             break;
+//         }
+//     }
+//     if(lineage_choice !== null){
+//         // get lineage from server
+//         let lineage_no = lineage_choice.lineage_id;
+//         let path = "lineages/lineage_" + lineage_no + ".txt"
+//         let download_to = "/tmp/lineage_" + lineage_no + ".txt";
+//         await downloadFile(path, download_to);
+//         await fs.readFile(download_to,'utf-8',function (err, data) {
+//             if(err) throw err;
+//             console.log(data);
+//             console.log(data.toString());
+//             console.log("data printed");
+//             let lineageJSON = {
+//                 lineageJson: JSON.parse(data.toString()),
+//                 cookie: cookie
+//             }
+//             console.log(lineageJSON.lineageJson);
+//             res.send(lineageJSON);
+//         });
+//         //
+//         // fs.unlink(download_to, function (err) {
+//         //     if (err) {
+//         //         throw err;
+//         //     } else {
+//         //         console.log(`successfully deleted: ${download_to}`);
+//         //     }
+//         // })
 //
-//     if(lineages[0].occupied === "false"){
-//         lineages[0].occupied = "true";
-//
-//         lineageJson = {
-//             lineageJson: lineages[0],
-//             cookie: cookie
-//         }
-//         res.send(lineageJson);
-//     } else if(lineages[1].occupied === "false"){
-//         lineages[1].occupied = "true";
-//         lineageJson = {
-//             lineageJson: lineages[1],
-//             cookie: cookie
-//         }
-//         res.send(lineageJson);
-//     } else if(lineages[2].occupied === "false"){
-//         lineages[2].occupied = "true";
-//         lineageJson = {
-//             lineageJson: lineages[2],
-//             cookie: cookie
-//         }
-//         res.send(lineageJson);
-//     } else if(lineages[3].occupied === "false"){
-//         lineages[3].occupied = "true";
-//         lineageJson = {
-//             lineageJson: lineages[3],
-//             cookie: cookie
-//         }
-//         res.send(lineageJson);
-//     } else if(lineages[4].occupied === "false"){
-//         lineages[4].occupied = "true";
-//         lineageJson = {
-//             lineageJson: lineages[4],
-//             cookie: cookie
-//         }
-//         res.send(lineageJson);
-//     } else if(lineages[5].occupied === "false"){
-//         lineages[5].occupied = "true";
-//         lineageJson = {
-//             lineageJson: lineages[5],
-//             cookie: cookie
-//         }
-//         res.send(lineageJson);
-//     } else{
+//         // fs.readFile(download_to, 'utf8', function(err,data){
+//         //     if(err) throw err;
+//         //     let obj = JSON.parse(data);
+//         // });
+//         // let lineageJSON = {
+//         //     lineageJson: obj;
+//         // }
+//         // res.send(lineageJSON)
+//     } else {
 //         res.send({});
 //     }
-// });
+// })
+
+router.get("/task/json", function (req,res,next) {
+    let lineageJson;
+    let cookie = req.sessionID;
+
+    console.log(lineages[0].lineage_id);
+    console.log(lineages[0].occupied);
+    console.log(lineages[1].lineage_id);
+    console.log(lineages[1].occupied);
+    console.log(lineages[2].lineage_id);
+    console.log(lineages[2].occupied);
+    console.log(lineages[3].lineage_id);
+    console.log(lineages[3].occupied);
+    console.log(lineages[4].lineage_id);
+    console.log(lineages[4].occupied);
+    console.log(lineages[5].lineage_id);
+    console.log(lineages[5].occupied);
+
+    if(lineages[0].occupied === "false"){
+        lineages[0].occupied = "true";
+
+        lineageJson = {
+            lineageJson: lineages[0],
+            cookie: cookie
+        }
+        res.send(lineageJson);
+    } else if(lineages[1].occupied === "false"){
+        lineages[1].occupied = "true";
+        lineageJson = {
+            lineageJson: lineages[1],
+            cookie: cookie
+        }
+        res.send(lineageJson);
+    } else if(lineages[2].occupied === "false"){
+        lineages[2].occupied = "true";
+        lineageJson = {
+            lineageJson: lineages[2],
+            cookie: cookie
+        }
+        res.send(lineageJson);
+    } else if(lineages[3].occupied === "false"){
+        lineages[3].occupied = "true";
+        lineageJson = {
+            lineageJson: lineages[3],
+            cookie: cookie
+        }
+        res.send(lineageJson);
+    } else if(lineages[4].occupied === "false"){
+        lineages[4].occupied = "true";
+        lineageJson = {
+            lineageJson: lineages[4],
+            cookie: cookie
+        }
+        res.send(lineageJson);
+    } else if(lineages[5].occupied === "false"){
+        lineages[5].occupied = "true";
+        lineageJson = {
+            lineageJson: lineages[5],
+            cookie: cookie
+        }
+        res.send(lineageJson);
+    } else{
+        res.send({});
+    }
+});
 
 router.post("/task/json", async function (req, res){
     let curr_lineage = req.body;
@@ -271,7 +271,7 @@ router.post("/task/json", async function (req, res){
         file_type: "lineage",
         no: lin_id
     }
-    write2cloud(fileName, lineageJson, fileType).then(r => console.log("lineage written"));
+    // write2cloud(fileName, lineageJson, fileType).then(r => console.log("lineage written"));
 
     if(!curr_lineage.valid){
         let session_chains = curr_lineage.session_len;
@@ -282,22 +282,22 @@ router.post("/task/json", async function (req, res){
         }
         curr_lineage.chains = chains;
     }
-
-    let path = "lineages/lineage_" + lin_id + ".txt"
-    let download_to = "LineagesJSON/lineage_" + lin_id + ".txt";
-    await downloadFile(path, download_to);
-    fs.readFile(download_to, function (err, data) {
-        if(err) throw err;
-        let lin = JSON.parse(data.toString());
-        lin.chains = curr_lineage.chains;
-        let linJSON = JSON.stringify(lin);
-        const fileName = lin_id + ".txt";
-        const fileType = {
-            file_type: "lin_store"
-        };
-        write2cloud(fileName, linJSON, fileType).then(r => console.log("lineage saved"));
-
-    });
+    //
+    // let path = "lineages/lineage_" + lin_id + ".txt"
+    // let download_to = "LineagesJSON/lineage_" + lin_id + ".txt";
+    // await downloadFile(path, download_to);
+    // fs.readFile(download_to, function (err, data) {
+    //     if(err) throw err;
+    //     let lin = JSON.parse(data.toString());
+    //     lin.chains = curr_lineage.chains;
+    //     let linJSON = JSON.stringify(lin);
+    //     const fileName = lin_id + ".txt";
+    //     const fileType = {
+    //         file_type: "lin_store"
+    //     };
+    //     write2cloud(fileName, linJSON, fileType).then(r => console.log("lineage saved"));
+    //
+    // });
 
     // lineages[lin_id] = lin;
     // console.log(lineages[lin_id]);
@@ -381,7 +381,7 @@ router.post("/exit/codes", function (req, res){
         no: no_users
     };
 
-    write2cloud(fileName, cookieJson, fileType).then(r => console.log("cookie exit codes updated"));
+    // write2cloud(fileName, cookieJson, fileType).then(r => console.log("cookie exit codes updated"));
     no_users ++;
 });
 
@@ -403,7 +403,7 @@ router.post("/exit/form", function (req, res) {
         file_type: "comment"
     };
     form_text = form_text[0]
-    write2cloud(fileName, form_text, fileType).then(r => console.log("comment sent"));
+    // write2cloud(fileName, form_text, fileType).then(r => console.log("comment sent"));
 
     // console.log(form_text);
     res.end();
