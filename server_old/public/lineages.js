@@ -1,14 +1,14 @@
 // const Chain = require("server_old/public/bar-charts");
 // const start_chain = require("server_old/public/bar-charts");
 import {BarChart, Chain, start_chain} from "./bar-charts.js";
-const ip_address = "localhost"
+const ip_address = "localhost:8080"
 
 function isEmpty(obj){
     return Object.keys(obj).length === 0;
 }
 
 const loadLineage = async () => {
-    const response = await fetch(`http://${ip_address}/task/json`);
+    const response = await fetch(`/task/json`);
     return await response.json();
 }
 
