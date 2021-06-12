@@ -1,5 +1,4 @@
 const codeStart = "842";
-const ip_address = "localhost:8080"
 
 const loadCodes = async () => {
     const response = await fetch("/exit/codes");

@@ -364,6 +364,7 @@ router.get("/exit/codes", function (req, res) {
 })
 
 let no_users = 0;
+
 router.post("/exit/codes", function (req, res){
     let currentCode = req.body;
     console.log(currentCode.code);
