@@ -2,12 +2,12 @@ const codeStart = "842";
 const ip_address = "localhost:8080"
 
 const loadCodes = async () => {
-    const response = await fetch(`http://${ip_address}/exit/codes`);
+    const response = await fetch("/exit/codes");
     return await response.json();
 }
 
 const postCode = (code) => {
-    fetch(`http://${ip_address}/exit/codes`, {
+    fetch("/exit/codes", {
         headers: {'Content-Type': "application/json"},
         method: 'post',
         body: code

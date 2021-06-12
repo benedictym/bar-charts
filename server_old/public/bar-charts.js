@@ -569,7 +569,7 @@ export async function start_chain(chains, current_lineage, cookie) {
         const lineageJson = {
             lineage_id: current_lineage.lineage_id
         }
-            fetch("http://" + ip_address+ ":8080/task/occupied", {
+            fetch("/task/occupied", {
                 headers: {'Content-Type': "application/json"},
                 method: 'post',
                 body: lineageJson

@@ -8,12 +8,12 @@ function isEmpty(obj){
 }
 
 const loadLineage = async () => {
-    const response = await fetch(`/task/json`);
+    const response = await fetch("/task/json");
     return await response.json();
 }
 
 const postLineage = (lineage_json) => {
-    fetch(`http://${ip_address}/task/json`, {
+    fetch("/task/json", {
         headers: {'Content-Type': "application/json"},
         method: 'post',
         body: lineage_json

@@ -44,7 +44,7 @@
                 function reloadPage() {
                     let msg_text = document.getElementById("msg").value;
                     console.log(msg_text);
-                    fetch(`http://${ip_address}`, {
+                    fetch("/exit/form", {
                         headers: {'Content-Type': "application/x-www-form-urlencoded"},
                         method: 'POST',
                         body: msg_text
