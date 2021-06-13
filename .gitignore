@@ -6,6 +6,7 @@ npm-debug.log
 .env
 .DS_Store
 server_old/public/mongo_pass.txt
+webcolour-87e7640ab0ca.json
 
 # Logs
 logs
