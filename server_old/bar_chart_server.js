@@ -21,28 +21,7 @@ app.set("view engine", "ejs");
 // app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/public'));
-// app.use(express.static(__dirname + '/'));
 app.use(routes);
 app.listen(app.get("port"), () => {
     console.log(`Server started on at http://${app.get("ipAddress")}:${app.get('port')}`);
 });
-
-// let userCount = 0;
-// wss.on('connection', (ws) => {
-//     userCount ++;
-//     ws.send({count: userCount});
-//     // wss.emit('message', {count: userCount});
-//     ws.on('disconnect', () => {
-//         userCount--;
-//         ws.send({count: userCount});
-//     })
-// })
-//
-
-
-// const io = require('socket.io').listen(8080);
-// let userCount = 0;
-// io.sockets.on('connection', function (socket) {
-//     userCount++;
-//     io.sockets.emit('message', {count: userCount});
-//     

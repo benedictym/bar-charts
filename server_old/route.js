@@ -3,7 +3,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
-// const {uploadFile} = require('buckets');
+const uploadFile = require('./buckets');
 const Lineages = require('./public/lineage_server');
 const fs = require('fs');
 const jsonParser = bodyParser.json({limit: '500mb'});
@@ -18,16 +18,16 @@ router.use(bodyParser.urlencoded({ limit: "500mb", extended: true, parameterLimi
 //     parameterLimit: 50000
 // }));
 
-const bucketName = "web-colour-bucket";
-
-const storage = new Storage();
-
-async function uploadFile(filePath, fileName){
-    await storage.bucket(bucketName).upload(filePath,{
-        destination: fileName
-    });
-    console.log(`${filePath} uploaded to ${bucketName}`);
-}
+// const bucketName = "web-colour-bucket";
+//
+// const storage = new Storage();
+//
+// async function uploadFile(filePath, fileName){
+//     await storage.bucket(bucketName).upload(filePath,{
+//         destination: fileName
+//     });
+//     console.log(`${filePath} uploaded to ${bucketName}`);
+// }
 async function write2cloud(fileName, fileWrite, fileType) {
     // fileWrite is what to write to the file
 
@@ -121,11 +121,11 @@ const lineages = [new Lineages(0), new Lineages(1), new Lineages(2), new Lineage
 
 router.post("/task/occupied", function (req, res) {
     let curr_lineage = req.body;
-    // console.log(curr_lineage);
     let lin_id = curr_lineage.lineage_id;
     let lin = lineages[lin_id];
     lin.occupied = "false";
     lineages[lin_id] = lin;
+    console.log(lin);
 });
 
 //old task json
@@ -249,11 +249,66 @@ router.get("/task/json", function (req,res,next) {
     }
 });
 
-router.post("/task/json", async function (req, res){
+// router.post("/task/json", async function (req, res){
+//     let curr_lineage = req.body;
+//     let cookie = curr_lineage.cookie;
+//     let lin_id = curr_lineage.lineage_id;
+//     let lin = lineages[lin_id];
+//     lin.occupied = "false";
+//     const lineageObj = {
+//         lineage_id: lin_id,
+//         cookie: cookie,
+//         chains: curr_lineage.chains,
+//         gelmanRubin: curr_lineage.gelmanRubin,
+//         valid: curr_lineage.valid,
+//         sides: curr_lineage.sides,
+//         no_choices: curr_lineage.no_choices
+//     };
+//
+//     const lineageJson = JSON.stringify(lineageObj);
+//     const fileName = lin_id + ":" + cookie + "_" + getFormattedTime();
+//     const fileType = {
+//         file_type: "lineage",
+//         no: lin_id
+//     }
+//     // write2cloud(fileName, lineageJson, fileType).then(r => console.log("lineage written"));
+//
+//     // if(!curr_lineage.valid){
+//     //     let session_chains = curr_lineage.session_len;
+//     //     let chains = curr_lineage.chains;
+//     //     for(let i=0; i < chains.length; i++){
+//     //         let session_length = session_chains[i];
+//     //         (chains[i].selected_colours).splice(-session_length);
+//     //     }
+//     //     curr_lineage.chains = chains;
+//     // }
+//     //
+//     // let path = "lineages/lineage_" + lin_id + ".txt"
+//     // let download_to = "LineagesJSON/lineage_" + lin_id + ".txt";
+//     // await downloadFile(path, download_to);
+//     // fs.readFile(download_to, function (err, data) {
+//     //     if(err) throw err;
+//     //     let lin = JSON.parse(data.toString());
+//     //     lin.chains = curr_lineage.chains;
+//     //     let linJSON = JSON.stringify(lin);
+//     //     const fileName = lin_id + ".txt";
+//     //     const fileType = {
+//     //         file_type: "lin_store"
+//     //     };
+//     //     write2cloud(fileName, linJSON, fileType).then(r => console.log("lineage saved"));
+//     //
+//     // });
+//
+//     lineages[lin_id] = lin;
+//     console.log(lineages[lin_id]);
+//
+// });
+
+router.post("/task/json", function (req, res){
     let curr_lineage = req.body;
     let cookie = curr_lineage.cookie;
     let lin_id = curr_lineage.lineage_id;
-    // let lin = lineages[lin_id];
+    let lin = lineages[lin_id];
     // lin.occupied = "false";
     const lineageObj = {
         lineage_id: lin_id,
@@ -271,7 +326,11 @@ router.post("/task/json", async function (req, res){
         file_type: "lineage",
         no: lin_id
     }
-    // write2cloud(fileName, lineageJson, fileType).then(r => console.log("lineage written"));
+
+    write2cloud(fileName, lineageJson, fileType).then(r => console.log("lineage written")).catch(e => {
+        console.log("promise error with writing file to google cloud bucket");
+        console.error(e)
+    });
 
     if(!curr_lineage.valid){
         let session_chains = curr_lineage.session_len;
@@ -282,67 +341,12 @@ router.post("/task/json", async function (req, res){
         }
         curr_lineage.chains = chains;
     }
-    //
-    // let path = "lineages/lineage_" + lin_id + ".txt"
-    // let download_to = "LineagesJSON/lineage_" + lin_id + ".txt";
-    // await downloadFile(path, download_to);
-    // fs.readFile(download_to, function (err, data) {
-    //     if(err) throw err;
-    //     let lin = JSON.parse(data.toString());
-    //     lin.chains = curr_lineage.chains;
-    //     let linJSON = JSON.stringify(lin);
-    //     const fileName = lin_id + ".txt";
-    //     const fileType = {
-    //         file_type: "lin_store"
-    //     };
-    //     write2cloud(fileName, linJSON, fileType).then(r => console.log("lineage saved"));
-    //
-    // });
 
-    // lineages[lin_id] = lin;
-    // console.log(lineages[lin_id]);
+    lin.chains = curr_lineage.chains;
+    lineages[lin_id] = lin;
+    console.log(lineages[lin_id]);
 
 });
-
-// router.post("/task/json", function (req, res){
-//     let curr_lineage = req.body;
-//     let cookie = curr_lineage.cookie;
-//     let lin_id = curr_lineage.lineage_id;
-//     let lin = lineages[lin_id];
-//     // lin.occupied = "false";
-//     const lineageObj = {
-//         lineage_id: lin_id,
-//         cookie: cookie,
-//         chains: curr_lineage.chains,
-//         gelmanRubin: curr_lineage.gelmanRubin,
-//         valid: curr_lineage.valid,
-//         sides: curr_lineage.sides,
-//         no_choices: curr_lineage.no_choices
-//     };
-//
-//     const lineageJson = JSON.stringify(lineageObj);
-//     const fileName = lin_id + ":" + cookie + "_" + getFormattedTime();
-//     const fileType = {
-//         file_type: "lineage",
-//         no: lin_id
-//     }
-//     write2cloud(fileName, lineageJson, fileType).then(r => console.log("lineage written"));
-//
-//     if(!curr_lineage.valid){
-//         let session_chains = curr_lineage.session_len;
-//         let chains = curr_lineage.chains;
-//         for(let i=0; i < chains.length; i++){
-//             let session_length = session_chains[i];
-//             (chains[i].selected_colours).splice(-session_length);
-//         }
-//         curr_lineage.chains = chains;
-//     }
-//
-//     lin.chains = curr_lineage.chains;
-//     lineages[lin_id] = lin;
-//     console.log(lineages[lin_id]);
-//
-// });
 
 
 router.get("/task", function (req, res) {
@@ -382,7 +386,10 @@ router.post("/exit/codes", function (req, res){
         no: no_users
     };
 
-    // write2cloud(fileName, cookieJson, fileType).then(r => console.log("cookie exit codes updated"));
+    write2cloud(fileName, cookieJson, fileType).then(r => console.log("cookie exit codes updated")).catch(e => {
+        console.log("promise error with writing code file to google cloud bucket");
+        console.error(e);
+    })
     no_users ++;
 });
 
@@ -404,9 +411,12 @@ router.post("/exit/form", function (req, res) {
         file_type: "comment"
     };
     form_text = form_text[0]
-    // write2cloud(fileName, form_text, fileType).then(r => console.log("comment sent"));
+    write2cloud(fileName, form_text, fileType).then(r => console.log("comment sent")).catch(e => {
+        console.log("promise error with writing message file to google cloud bucket");
+        console.error(e)
+    });
 
-    // console.log(form_text);
+    console.log(form_text);
     res.end();
 
 })

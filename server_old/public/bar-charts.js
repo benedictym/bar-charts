@@ -15,12 +15,6 @@ export class BarChart {
         const lightness_check = (el) => (el >= 15 && el <= 90);
         const chromaticA_check = (el) => (el >= -86.185 && el <= 96.254);
         const chromaticB_check = (el) => (el >= -107.863 && el <= 84.482);
-        // const lightness_check = (el) => (el >= 0 && el <= 100);
-        // const chromaticA_check = (el) => (el >= -150 && el <= 150);
-        // const chromaticB_check = (el) => (el >= -150 && el <= 150);
-
-        // const coord_check = this.lightness.every(lightness_check) && this.chromatic_a.every(chromaticA_check) && this.chromatic_b.every(chromaticB_check);
-        // const len_check = this.lightness.length === this.chromatic_b.length === this.chro
         return (this.lightness.every(lightness_check) && this.chromatic_a.every(chromaticA_check) && this.chromatic_b.every(chromaticB_check));
     }
 
@@ -147,7 +141,6 @@ const buttons = document.querySelectorAll('button');
 // right is 1
 let sides = "";
 let session_chains = {};
-// let autoRejections = [];
 
 function change(chain) {
     let current_chart;
@@ -349,8 +342,7 @@ function change(chain) {
             new_chart = getSample();
             //
             while (!new_chart.is_legal() || new_chart === current_chart){
-                let rejections_so_far = current_chart.no_rejections + 1;
-                current_chart.no_rejections = rejections_so_far;
+                current_chart.no_rejections = current_chart.no_rejections + 1;
                 let out_of_bounds = [];
                 if(!new_chart.legal_light()){
                     out_of_bounds.push("l");
@@ -363,11 +355,7 @@ function change(chain) {
                 }
 
                 current_chart.rejectionReason.push(out_of_bounds);
-                // let auto_rejection = {
-                //     kept: current_chart,
-                //     rejected: new_chart
-                // }
-                // autoRejections.push(auto_rejection);
+
                 new_chart = getSample();
             }
         }
@@ -438,7 +426,6 @@ function change(chain) {
         }
     })
 }
-// const chains = [new Chain(0), new Chain(1), new Chain(2), new Chain(3), new Chain(4)];
 
 function gelman_rubin (chains, bar_parameter){
     // M = chain length
@@ -506,8 +493,6 @@ function gelman_rubin (chains, bar_parameter){
 
 export async function start_chain(chains, current_lineage, cookie) {
 
-    const ip_address = "34.89.105.251"
-
     const postLineage = async (lineage_json, server_url) => {
         const settings = {
             headers: {'Content-Type': "application/json"},
@@ -515,10 +500,9 @@ export async function start_chain(chains, current_lineage, cookie) {
             body: lineage_json
         }
 
-        await fetch("http://" + ip_address + ":8080" + server_url, settings);
+        await fetch( server_url, settings);
 
     }
-
     let lineage_json = ()=> {
         if(chains[0].selected_colours.length >= 100) {
             const lightness = gelman_rubin(chains, 'lightness');
@@ -545,7 +529,6 @@ export async function start_chain(chains, current_lineage, cookie) {
 
         current_lineage["valid"] = valid;
         current_lineage.chains = chains;
-        // current_lineage["occupied"] = current_lineage.occupied;
         current_lineage["cookie"] = cookie;
         current_lineage["sides"] = sides;
         current_lineage["no_choices"] = sides.length;
@@ -553,32 +536,19 @@ export async function start_chain(chains, current_lineage, cookie) {
         return JSON.stringify(current_lineage);
     }
 
-    //     fetch("https://bar-colour.nw.r.appspot.com/task/json", {
-    //         headers: {'Content-Type': "application/json"},
-    //         method: 'post',
-    //         body: lineage_json
-    //     })
-    //         .then(function (res){console.log(res)})
-    //         .catch(function (res) {console.log(res)});
-    // }
-
     let valid = true;
     const total = 1500;
 
     window.addEventListener("beforeunload", async (e) => {
-        const lineageJson = {
+        const lineageJson = JSON.stringify({
             lineage_id: current_lineage.lineage_id
+        });
+        try{
+            await postLineage(lineageJson, "/task/occupied");
+        }catch (e) {
+            console.log("promise rejection error with updating occupied status");
+            console.error(e);
         }
-            fetch("/task/occupied", {
-                headers: {'Content-Type': "application/json"},
-                method: 'post',
-                body: lineageJson
-            })
-                .then(function (res){console.log(res)})
-                .catch(function (res) {console.log(res)});
-
-// ``        postLineage(JSON.stringify(lineageJson), "/task/occupied");
-        // let lineageson = lineage_json();
 
     });
 
@@ -587,16 +557,26 @@ export async function start_chain(chains, current_lineage, cookie) {
         let chain_no = i % chains.length;
         let amount_left = total - i;
         document.getElementById('amount_left').innerHTML = "Choices left: " + "<b>" + amount_left.toString() + "</b>";
-        await change(chains[chain_no]);
-        if(((i+1) % 100) === 0){
+        try{
+            await change(chains[chain_no]);
+        } catch (e) {
+            console.log("chain promise error: ",e)
+        }
+        if(((i+1) % 500) === 0){
             let lineageJson = lineage_json();
-            // postLineage(lineageJson,  "task/json");
+            try{
+                postLineage(lineageJson, "/task/json");
+            } catch (e) {
+                console.log("promise error with posting lineage");
+                console.error(e);
+            }
         }
 
         if(chains[chain_no].selected_colours.length >= 6000){
             valid = true;
             break;
         }
+
         if(!session_chains.hasOwnProperty(chain_no)){
             session_chains[chain_no] = 1;
         } else {
@@ -609,12 +589,8 @@ export async function start_chain(chains, current_lineage, cookie) {
         let alternate = /(01){7}/.test(sides);
         if(all_left || all_right || alternate){
             valid = false;
-            // console.log("not completed correctly");
             break;
         }
-
-
-        // console.log(session_chains);
         i++;
     }
 

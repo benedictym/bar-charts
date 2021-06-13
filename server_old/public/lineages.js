@@ -12,17 +12,18 @@ const loadLineage = async () => {
     return await response.json();
 }
 
-const postLineage = (lineage_json) => {
-    fetch("/task/json", {
-        headers: {'Content-Type': "application/json"},
-        method: 'post',
-        body: lineage_json
-    })
-        .then(function (res){console.log(res)})
-        .catch(function (res) {console.log(res)});
-
-    window.location.href = "/exit";
-}
+// attempts at saving lineage
+// const postLineage = (lineage_json) => {
+//     fetch("/task/json", {
+//         headers: {'Content-Type': "application/json"},
+//         method: 'post',
+//         body: lineage_json
+//     })
+//         .then(function (res){console.log(res)})
+//         .catch(function (res) {console.log(res)});
+//
+//     window.location.href = "/exit";
+// }
 
 // const quickSave = (lineage_json) => {
 //     window.addEventListener("beforeunload", function () {
@@ -44,6 +45,7 @@ async function initiateLineage() {
     if(isEmpty(lineageJson)){
         window.location.href = "/unavailable";
     }
+
     let lineage_no = current_lineage.lineage_id;
 
     console.log(lineage_no);
@@ -67,12 +69,8 @@ async function initiateLineage() {
         }
     }
 
-    // current_lineage.chains = await start_chain(chain_list, current_lineage);
     await start_chain(chain_list, current_lineage, cookie);
-    // console.log(current_lineage.chains);
-    // const lineage_json = JSON.stringify(current_lineage);
-    // // quickSave(lineage_json);
-    // postLineage(lineage_json);
+
 }
 
 await initiateLineage();
