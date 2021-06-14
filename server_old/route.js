@@ -344,7 +344,7 @@ router.post("/task/json", function (req, res){
 
     lin.chains = curr_lineage.chains;
     lineages[lin_id] = lin;
-    console.log(lineages[lin_id]);
+    // console.log(lineages[lin_id]);
 
 });
 

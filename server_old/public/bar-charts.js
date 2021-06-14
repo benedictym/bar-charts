@@ -493,14 +493,15 @@ function gelman_rubin (chains, bar_parameter){
 
 export async function start_chain(chains, current_lineage, cookie) {
 
-    const postLineage = async (lineage_json, server_url) => {
+    const postLineage = async (lineage_json, server_url, keepAlive = false) => {
         const settings = {
             headers: {'Content-Type': "application/json"},
             method: 'POST',
-            body: lineage_json
+            body: lineage_json,
+            keepalive: keepAlive
         }
 
-        await fetch( server_url, settings);
+        await fetch(server_url, settings);
 
     }
     let lineage_json = ()=> {
@@ -544,7 +545,7 @@ export async function start_chain(chains, current_lineage, cookie) {
             lineage_id: current_lineage.lineage_id
         });
         try{
-            postLineage(lineageJson, "/task/occupied");
+            await postLineage(lineageJson, "/task/occupied", true);
         }catch (e) {
             console.log("promise rejection error with updating occupied status");
             console.error(e);
