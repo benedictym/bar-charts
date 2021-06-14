@@ -544,7 +544,7 @@ export async function start_chain(chains, current_lineage, cookie) {
             lineage_id: current_lineage.lineage_id
         });
         try{
-            await postLineage(lineageJson, "/task/occupied");
+            postLineage(lineageJson, "/task/occupied");
         }catch (e) {
             console.log("promise rejection error with updating occupied status");
             console.error(e);

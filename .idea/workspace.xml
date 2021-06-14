@@ -24,6 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="56e09eb9-fd9c-478c-9f92-23463dfc2c74" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_old/public/bar-charts.js" beforeDir="false" afterPath="$PROJECT_DIR$/server_old/public/bar-charts.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +219,8 @@
       <workItem from="1623185990862" duration="312000" />
       <workItem from="1623188007341" duration="2758000" />
       <workItem from="1623358783218" duration="3218000" />
-      <workItem from="1623585370113" duration="9896000" />
+      <workItem from="1623585370113" duration="11991000" />
+      <workItem from="1623705601180" duration="187000" />
     </task>
     <servers />
   </component>
@@ -420,7 +422,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/server_old/route.js</url>
           <line>124</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
