@@ -493,12 +493,12 @@ function gelman_rubin (chains, bar_parameter){
 
 export async function start_chain(chains, current_lineage, cookie) {
 
-    const postLineage = async (lineage_json, server_url) => {
+    const postLineage = async (lineage_json, server_url, keepAlive = false) => {
         const settings = {
             headers: {'Content-Type': "application/json"},
             method: 'POST',
             body: lineage_json,
-            keepalive: true
+            keepalive: keepAlive
         }
 
         await fetch(server_url, settings);
