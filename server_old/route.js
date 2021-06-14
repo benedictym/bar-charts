@@ -125,7 +125,7 @@ router.post("/task/occupied", function (req, res) {
     let lin = lineages[lin_id];
     lin.occupied = "false";
     lineages[lin_id] = lin;
-    console.log(lin);
+    // console.log(lin);
 });
 
 //old task json
