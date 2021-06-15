@@ -569,7 +569,7 @@ export async function start_chain(chains, current_lineage, cookie) {
                 console.log("promise error with posting lineage");
                 console.error(e);
             }
-        } else if ((((i+1) % 500) === 0) && i <= 400) {
+        } else if ((((i+1) % 500) === 1) && i <= 400) {
             let lineageJson = lineage_json();
             try{
                 await postLineage(lineageJson, "/task/json");
