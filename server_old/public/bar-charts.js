@@ -561,10 +561,18 @@ export async function start_chain(chains, current_lineage, cookie) {
         } catch (e) {
             console.log("chain promise error: ",e)
         }
-        if(((i+1) % 500) === 0){
+        if((((i+1) % 500) === 0) && i > 400){
             let lineageJson = lineage_json();
             try{
                 postLineage(lineageJson, "/task/json");
+            } catch (e) {
+                console.log("promise error with posting lineage");
+                console.error(e);
+            }
+        } else if ((((i+1) % 500) === 0) && i <= 400) {
+            let lineageJson = lineage_json();
+            try{
+                await postLineage(lineageJson, "/task/json");
             } catch (e) {
                 console.log("promise error with posting lineage");
                 console.error(e);
