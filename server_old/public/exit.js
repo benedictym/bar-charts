@@ -9,7 +9,8 @@ const postCode = (code) => {
     fetch("/exit/codes", {
         headers: {'Content-Type': "application/json"},
         method: 'post',
-        body: code
+        body: code,
+        keepalive: true
     })
         .then(function (res){console.log(res)})
         .catch(function (res) {console.log(res)});
@@ -33,7 +34,7 @@ async function generateCode() {
     }
     const codeRandomString = codeRandom.toString();
     let codeRandomJson = `{"code": ${codeRandom}, "cookie": "${cookie}"}`;
-    postCode(codeRandomJson);
+    await postCode(codeRandomJson);
     document.getElementById('surveyCode').innerHTML = "<b>" +codeStart+codeRandomString + "</b>";
 
 }
