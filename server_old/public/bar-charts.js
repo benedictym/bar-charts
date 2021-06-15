@@ -354,7 +354,7 @@ function change(chain) {
                     out_of_bounds.push("b")
                 }
 
-                // current_chart.rejectionReason.push(out_of_bounds);
+                current_chart.rejectionReason.push(out_of_bounds);
 
                 new_chart = getSample();
             }
