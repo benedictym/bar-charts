@@ -4,8 +4,8 @@ export class BarChart {
         this.chromatic_a = chromatic_a;
         this.chromatic_b = chromatic_b;
         this.rechosen = false;
-        this.no_rejections = 0;
-        this.rejectionReason = [];
+        this.no_rej = 0;
+        this.rejRes = {l: 0, a: 0, b: 0};
         this.no_bars = lightness.length;
     }
 
@@ -342,20 +342,17 @@ function change(chain) {
             new_chart = getSample();
             //
             while (!new_chart.is_legal() || new_chart === current_chart){
-                current_chart.no_rejections = current_chart.no_rejections + 1;
-                let out_of_bounds = [];
+                current_chart.no_rej = current_chart.no_rej + 1;
+
                 if(!new_chart.legal_light()){
-                    out_of_bounds.push("l");
+                    current_chart.rejRes["l"] += 1;
                 }
                 if(!new_chart.legal_chromA()){
-                    out_of_bounds.push("a");
+                    current_chart.rejRes["a"] += 1;
                 }
                 if(!new_chart.legal_chromB()){
-                    out_of_bounds.push("b")
+                    current_chart.rejRes["b"] += 1;
                 }
-
-                current_chart.rejectionReason.push(out_of_bounds);
-
                 new_chart = getSample();
             }
         }
