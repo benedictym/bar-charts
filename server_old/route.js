@@ -126,6 +126,8 @@ router.post("/task/occupied", function (req, res) {
     lin.occupied = "false";
     lineages[lin_id] = lin;
     console.log(lin.lineage_id + " : " + lin.occupied);
+
+    return res.sendStatus(200).end();
 });
 
 //old task json
@@ -389,8 +391,10 @@ router.post("/exit/codes", function (req, res){
     write2cloud(fileName, cookieJson, fileType).then(r => console.log("cookie exit codes updated")).catch(e => {
         console.log("promise error with writing code file to google cloud bucket");
         console.error(e);
-    })
-    no_users ++;
+    });
+
+    res.sendStatus(200).end();
+    // no_users ++;
 });
 
 router.get("/exit", function (req, res) {
@@ -417,7 +421,7 @@ router.post("/exit/form", function (req, res) {
     });
 
     console.log(form_text);
-    res.end();
+    return res.sendStatus(200).end();
 
 })
 

@@ -5,15 +5,15 @@ const loadCodes = async () => {
     return await response.json();
 }
 
-const postCode = (code) => {
-    fetch("/exit/codes", {
+const postCode = async (code) => {
+    await fetch("/exit/codes", {
         headers: {'Content-Type': "application/json"},
         method: 'post',
         body: code,
         keepalive: true
-    })
-        .then(function (res){console.log(res)})
-        .catch(function (res) {console.log(res)});
+    });
+        // .then(function (res){console.log(res)})
+        // .catch(function (res) {console.log(res)});
 
 }
 
