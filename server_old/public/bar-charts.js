@@ -538,8 +538,10 @@ export async function start_chain(chains, current_lineage, cookie) {
     const total = 1500;
 
     window.addEventListener("beforeunload", async (e) => {
+        // can edit for converged case
         const lineageJson = JSON.stringify({
-            lineage_id: current_lineage.lineage_id
+            lineage_id: current_lineage.lineage_id,
+            occupied: current_lineage.occupied
         });
             postLineage(lineageJson, "/task/occupied", true).catch(e => {
                 console.log("promise rejection error with updating occupied status");

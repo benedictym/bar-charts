@@ -122,8 +122,11 @@ const lineages = [new Lineages(0), new Lineages(1), new Lineages(2), new Lineage
 router.post("/task/occupied", function (req, res) {
     let curr_lineage = req.body;
     let lin_id = curr_lineage.lineage_id;
+    let occupied = curr_lineage.occupied;
     let lin = lineages[lin_id];
-    lin.occupied = "false";
+    if (occupied === ("false" || "true")){
+        lin.occupied = "false";
+    }
     lineages[lin_id] = lin;
     console.log(lin.lineage_id + " : " + lin.occupied);
 
@@ -205,7 +208,6 @@ router.get("/task/json", function (req,res,next) {
 
     if(lineages[0].occupied === "false"){
         lineages[0].occupied = "true";
-
         lineageJson = {
             lineageJson: lineages[0],
             cookie: cookie
