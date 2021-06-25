@@ -590,13 +590,13 @@ export async function start_chain(chains, current_lineage, cookie) {
             session_chains[chain_no] = chain_len + 1;
         }
 
-        // let all_left = /(0){13}/.test(sides);
-        // let all_right = /(1){13}/.test(sides);
-        // let alternate = /(01){7}/.test(sides);
-        // if(all_left || all_right || alternate){
-        //     valid = false;
-        //     break;
-        // }
+        let all_left = /(0){13}/.test(sides);
+        let all_right = /(1){13}/.test(sides);
+        let alternate = /(01){7}/.test(sides);
+        if(all_left || all_right || alternate){
+            valid = false;
+            break;
+        }
         i++;
     }
 
