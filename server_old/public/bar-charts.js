@@ -6,7 +6,7 @@ export class BarChart {
         this.rechosen = false;
         this.no_rej = 0;
         this.rejRes = {l: 0, a: 0, b: 0};
-        this.no_bars = lightness.length;
+        this.no_bars = 4;
     }
 
     // taken from Will
@@ -155,7 +155,7 @@ function change(chain) {
         let side = Math.round(Math.random());
 
         // generates array with no bars needed, with range needed
-        function generate_RandArray(max, min, no_bars=5){
+        function generate_RandArray(max, min, no_bars=4){
             let lab_array = [];
             for (let i = 0; i<no_bars; i++){
                 let rand_val = (Math.random()*(max-min))+min;
@@ -191,7 +191,7 @@ function change(chain) {
             let b_vals;
 
             // generate initial charts
-            function generate_colours(hue_range, no_bars = 5, saturated = true, light = true) {
+            function generate_colours(hue_range, no_bars = 4, saturated = true, light = true) {
                 const [hue_min, hue_max] = hue_range
                 let light_values;
                 let rand_a;

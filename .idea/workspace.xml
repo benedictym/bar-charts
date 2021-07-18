@@ -47,6 +47,12 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/server_old/public/bar-charts.js" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="ProjectId" id="1jsVnkjk051g325JGcUMT0eADJe" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -58,6 +64,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="ToolWindowDuplicates.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -73,7 +80,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -225,6 +232,11 @@
       <workItem from="1624112805813" duration="3249000" />
       <workItem from="1624130315470" duration="1186000" />
       <workItem from="1624636336964" duration="68000" />
+      <workItem from="1624987224165" duration="740000" />
+      <workItem from="1626634212576" duration="587000" />
+      <workItem from="1626638033728" duration="389000" />
+      <workItem from="1626641568651" duration="26000" />
+      <workItem from="1626642322683" duration="730000" />
     </task>
     <servers />
   </component>
@@ -262,111 +274,18 @@
       <screen x="0" y="23" width="1440" height="804" />
     </state>
     <state x="720" y="256" key="#Notifications/0.23.1440.804@0.23.1440.804" timestamp="1618100376421" />
-    <state x="695" y="232" key="#Web_Browsers" timestamp="1617289532545">
-      <screen x="0" y="23" width="1440" height="804" />
-    </state>
-    <state x="695" y="232" key="#Web_Browsers/0.23.1440.804@0.23.1440.804" timestamp="1617289532545" />
     <state x="313" y="23" width="1071" height="772" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1619138445005">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
-    <state x="369" y="65" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1617284587489" />
     <state x="313" y="23" width="1071" height="772" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.804@0.23.1440.804" timestamp="1619138445005" />
     <state x="766" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1618007712651">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
     <state x="766" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.804@0.23.1440.804" timestamp="1618007712651" />
-    <state x="0" y="23" key="FileDocumentManager.FileCacheConflict" timestamp="1617299855312">
+    <state x="725" y="134" key="RollbackChangesDialog" timestamp="1626642343312">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
-    <state x="0" y="23" key="FileDocumentManager.FileCacheConflict/0.23.1440.804@0.23.1440.804" timestamp="1617299855312" />
-    <state width="734" height="417" key="GridCell.Tab.0.bottom" timestamp="1617604536301">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="734" height="417" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1617604536301" />
-    <state width="734" height="417" key="GridCell.Tab.0.bottom/0.23.1440.804@0.23.1440.804" timestamp="1617572494298" />
-    <state width="734" height="417" key="GridCell.Tab.0.center" timestamp="1617604536297">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="734" height="417" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1617604536297" />
-    <state width="734" height="417" key="GridCell.Tab.0.center/0.23.1440.804@0.23.1440.804" timestamp="1617572494296" />
-    <state width="734" height="417" key="GridCell.Tab.0.left" timestamp="1617604536293">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="734" height="417" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1617604536293" />
-    <state width="734" height="417" key="GridCell.Tab.0.left/0.23.1440.804@0.23.1440.804" timestamp="1617572494296" />
-    <state width="734" height="417" key="GridCell.Tab.0.right" timestamp="1617604536299">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="734" height="417" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1617604536299" />
-    <state width="734" height="417" key="GridCell.Tab.0.right/0.23.1440.804@0.23.1440.804" timestamp="1617572494297" />
-    <state width="734" height="417" key="GridCell.Tab.1.bottom" timestamp="1617604536307">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="734" height="417" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1617604536307" />
-    <state width="734" height="417" key="GridCell.Tab.1.bottom/0.23.1440.804@0.23.1440.804" timestamp="1617572494302" />
-    <state width="734" height="417" key="GridCell.Tab.1.center" timestamp="1617604536305">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="734" height="417" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1617604536305" />
-    <state width="734" height="417" key="GridCell.Tab.1.center/0.23.1440.804@0.23.1440.804" timestamp="1617572494299" />
-    <state width="734" height="417" key="GridCell.Tab.1.left" timestamp="1617604536303">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="734" height="417" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1617604536303" />
-    <state width="734" height="417" key="GridCell.Tab.1.left/0.23.1440.804@0.23.1440.804" timestamp="1617572494298" />
-    <state width="734" height="417" key="GridCell.Tab.1.right" timestamp="1617604536306">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="734" height="417" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1617604536306" />
-    <state width="734" height="417" key="GridCell.Tab.1.right/0.23.1440.804@0.23.1440.804" timestamp="1617572494301" />
-    <state x="0" y="0" width="1440" height="884" key="GridCell.Tab.2.bottom" timestamp="1617604535821">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="0" y="0" width="1440" height="884" key="GridCell.Tab.2.bottom/0.0.1440.900@0.0.1440.900" timestamp="1617604535821" />
-    <state x="624" y="23" key="GridCell.Tab.2.bottom/0.23.1440.804@0.23.1440.804" timestamp="1617572494309" />
-    <state x="0" y="0" width="1440" height="884" key="GridCell.Tab.2.center" timestamp="1617604535819">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="0" y="0" width="1440" height="884" key="GridCell.Tab.2.center/0.0.1440.900@0.0.1440.900" timestamp="1617604535819" />
-    <state x="624" y="23" key="GridCell.Tab.2.center/0.23.1440.804@0.23.1440.804" timestamp="1617572494306" />
-    <state x="0" y="0" width="1440" height="884" key="GridCell.Tab.2.left" timestamp="1617604536308">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="0" y="0" width="1440" height="884" key="GridCell.Tab.2.left/0.0.1440.900@0.0.1440.900" timestamp="1617604536308" />
-    <state x="624" y="23" key="GridCell.Tab.2.left/0.23.1440.804@0.23.1440.804" timestamp="1617572494304" />
-    <state x="0" y="0" width="1440" height="884" key="GridCell.Tab.2.right" timestamp="1617604535820">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="0" y="0" width="1440" height="884" key="GridCell.Tab.2.right/0.0.1440.900@0.0.1440.900" timestamp="1617604535820" />
-    <state x="624" y="23" key="GridCell.Tab.2.right/0.23.1440.804@0.23.1440.804" timestamp="1617572494307" />
-    <state x="0" y="0" width="1440" height="884" key="GridCell.Tab.3.bottom" timestamp="1617604535739">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="0" y="0" width="1440" height="884" key="GridCell.Tab.3.bottom/0.0.1440.900@0.0.1440.900" timestamp="1617604535739" />
-    <state x="624" y="23" key="GridCell.Tab.3.bottom/0.23.1440.804@0.23.1440.804" timestamp="1617299987332" />
-    <state x="0" y="0" width="1440" height="884" key="GridCell.Tab.3.center" timestamp="1617604535737">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="0" y="0" width="1440" height="884" key="GridCell.Tab.3.center/0.0.1440.900@0.0.1440.900" timestamp="1617604535737" />
-    <state x="624" y="23" key="GridCell.Tab.3.center/0.23.1440.804@0.23.1440.804" timestamp="1617299987330" />
-    <state x="0" y="0" width="1440" height="884" key="GridCell.Tab.3.left" timestamp="1617604535737">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="0" y="0" width="1440" height="884" key="GridCell.Tab.3.left/0.0.1440.900@0.0.1440.900" timestamp="1617604535737" />
-    <state x="624" y="23" key="GridCell.Tab.3.left/0.23.1440.804@0.23.1440.804" timestamp="1617299987363" />
-    <state x="0" y="0" width="1440" height="884" key="GridCell.Tab.3.right" timestamp="1617604535738">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="0" y="0" width="1440" height="884" key="GridCell.Tab.3.right/0.0.1440.900@0.0.1440.900" timestamp="1617604535738" />
-    <state x="624" y="23" key="GridCell.Tab.3.right/0.23.1440.804@0.23.1440.804" timestamp="1617299987331" />
-    <state x="725" y="134" key="RollbackChangesDialog" timestamp="1618351383950">
-      <screen x="0" y="23" width="1440" height="804" />
-    </state>
-    <state x="725" y="134" key="RollbackChangesDialog/0.23.1440.804@0.23.1440.804" timestamp="1618351383950" />
-    <state x="458" y="62" width="913" height="722" key="SettingsEditor" timestamp="1617583022308">
-      <screen x="0" y="23" width="1440" height="804" />
-    </state>
-    <state x="458" y="62" width="913" height="722" key="SettingsEditor/0.23.1440.804@0.23.1440.804" timestamp="1617583022308" />
+    <state x="725" y="134" key="RollbackChangesDialog/0.23.1440.804@0.23.1440.804" timestamp="1626642343312" />
     <state x="0" y="0" width="1440" height="900" maximized="true" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1623588999185">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -397,18 +316,10 @@
       <screen x="0" y="23" width="1440" height="804" />
     </state>
     <state x="242" y="23" width="724" height="655" key="dock-window-5/0.23.1440.804@0.23.1440.804" timestamp="1618091324764" />
-    <state x="506" y="82" width="738" height="760" key="dock-window-6" timestamp="1617583490559">
+    <state x="660" y="151" width="670" height="676" key="search.everywhere.popup" timestamp="1624987430203">
       <screen x="0" y="23" width="1440" height="804" />
     </state>
-    <state x="506" y="82" width="738" height="760" key="dock-window-6/0.23.1440.804@0.23.1440.804" timestamp="1617583490559" />
-    <state x="0" y="23" width="787" height="785" key="dock-window-7" timestamp="1617651093715">
-      <screen x="0" y="23" width="1440" height="804" />
-    </state>
-    <state x="0" y="23" width="787" height="785" key="dock-window-7/0.23.1440.804@0.23.1440.804" timestamp="1617651093715" />
-    <state x="660" y="151" width="670" height="676" key="search.everywhere.popup" timestamp="1619657306823">
-      <screen x="0" y="23" width="1440" height="804" />
-    </state>
-    <state x="660" y="151" width="670" height="676" key="search.everywhere.popup/0.23.1440.804@0.23.1440.804" timestamp="1619657306823" />
+    <state x="660" y="151" width="670" height="676" key="search.everywhere.popup/0.23.1440.804@0.23.1440.804" timestamp="1624987430203" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
