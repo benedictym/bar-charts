@@ -125,9 +125,9 @@ router.post("/task/occupied", function (req, res) {
     let occupied = curr_lineage.occupied;
     let lin = lineages[lin_id];
     lin.occupied = "false";
-    // if (occupied === ("false" || "true")){
-    //     lin.occupied = "false";
-    // }
+    if (occupied !== "converged"){
+        lin.occupied = "false";
+    }
     lineages[lin_id] = lin;
     console.log(lin.lineage_id + " : " + lin.occupied);
 
