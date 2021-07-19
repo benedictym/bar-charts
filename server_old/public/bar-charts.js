@@ -592,7 +592,7 @@ export async function start_chain(chains, current_lineage, cookie) {
 
         let all_left = /(0){13}/.test(sides);
         let all_right = /(1){13}/.test(sides);
-        let alternate = /(01){7}/.test(sides);
+        let alternate = /(01){13}/.test(sides);
         if(all_left || all_right || alternate){
             valid = false;
             break;
