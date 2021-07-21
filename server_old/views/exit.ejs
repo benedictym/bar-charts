@@ -29,32 +29,17 @@
                     <br>For more information on the results of this study please email:
                     <br><b></b><a href="mailto:s1711095@ed.ac.uk"></a><b>s1711095@ed.ac.uk</b> </h3>
             </div>
-        <div class="form">
-            <h3>Please write in the form below, with your survey code starting the message, if you have had any issues or have any comments or suggestions</h3>
-            <form>
-<!--                <label for="msg">Message:</label>-->
-                <textarea id="msg" name="user_message"></textarea>
-                <br>
-                <br>
-<!--                <input id="submit_button" type="button" value="submit">-->
-                <input type="button" value="submit" onclick="reloadPage()">
-            </form>
-            <script>
-                 function reloadPage() {
-                    let msg_text = document.getElementById("msg").value;
-                    console.log(msg_text);
-                    fetch("/exit/form", {
-                        headers: {'Content-Type': "application/x-www-form-urlencoded"},
-                        method: 'POST',
-                        body: msg_text
-                    })
-                        .then(function (res){console.log(res)})
-                        .catch(function (res) {console.log(res)});
-                    window.location.href = "/exit";
-                }
-            </script>
-        </div>
+        <!--<div class="form">-->
+            <!--<h3>Please write in the form below, with your survey code starting the message, if you have had any issues or have any comments or suggestions</h3>-->
+            <!--&lt;!&ndash;<form>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                <label for="msg">Message:</label>&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;<textarea id="msg" name="user_message"></textarea>&ndash;&gt;-->
+                <!--&lt;!&ndash;<br>&ndash;&gt;-->
+                <!--&lt;!&ndash;<br>&ndash;&gt;-->
+            <!--&lt;!&ndash;</form>&ndash;&gt;-->
+
+        <!--</div>-->
     </div>
-</div>
+</div >
 </body>
 </html>
